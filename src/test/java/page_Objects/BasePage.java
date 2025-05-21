@@ -211,7 +211,7 @@ public class BasePage {
             }
         }
         return true;
-    }
+    }git add .
 
 
     /// Wait method
