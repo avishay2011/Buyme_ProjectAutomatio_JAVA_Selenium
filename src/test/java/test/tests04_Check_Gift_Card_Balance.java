@@ -22,7 +22,7 @@ public class tests04_Check_Gift_Card_Balance extends BaseTest {
     public void checkPageReadyAndPreConditions() throws ParserConfigurationException, IOException, SAXException {
         Assert.assertTrue(homePage.pageLoadedWithNoErrors());
         Assert.assertTrue(homePage.homePageIsDisplayed());
-        homePage.click_checkGiftCardBalance_Button();
+        homePage.clickcheckGiftCardBalanceButton();
         Assert.assertTrue(giftCard_balance_page.isGiftBalanceScreenOpen());
         Verifications.verifyTextEquals(giftCard_balance_page.getText_WhatIsYourCodeMessageText(), readFromThisFile("whatisCode_Text"),"Text for code field");
         Verifications.verifyTextEquals(giftCard_balance_page.getText_WhatIsExpirationDate_MessageText(), readFromThisFile("whatisExpiration_Text"),"Text for expiration field");

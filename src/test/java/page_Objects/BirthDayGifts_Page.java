@@ -15,17 +15,19 @@ public class BirthDayGifts_Page extends BasePage{
 
     //elements
     private By birthDay_gifts_List=By.cssSelector(".bm-product-card-link span");
-    private By birthDayGifts_Page_Title=By.xpath("//h1[text()='מתנות ליום הולדת']");
+
+    private List<WebElement> getBirthDayGiftsList() {
+        return getElementsFromListLocation(birthDay_gifts_List);
+    }
 
     @Step
-    public boolean isBirthDayGifts_Displayed(){
-        waitVisibility(birthDayGifts_Page_Title);
-        List<WebElement> birthDayGiftsList=driver.findElements(birthDay_gifts_List);
+    public boolean isBirthDayGiftsDisplayed(){
+        List<WebElement> birthDayGiftsList=getBirthDayGiftsList();
         return !birthDayGiftsList.isEmpty() && birthDayGiftsList.stream().allMatch(WebElement::isDisplayed) ;
     }
     @Step
     public BirthDayGifts_Page selectGift(String giftForSearch){
-        List<WebElement> birthDayGiftsList=driver.findElements(birthDay_gifts_List);
+        List<WebElement> birthDayGiftsList=getBirthDayGiftsList();
         for (WebElement element:birthDayGiftsList){
             if(element.getText().toLowerCase().contains(giftForSearch)){
                element.click();

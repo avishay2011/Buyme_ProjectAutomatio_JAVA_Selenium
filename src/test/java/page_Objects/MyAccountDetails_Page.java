@@ -19,17 +19,17 @@ public class MyAccountDetails_Page extends BasePage{
 
 
     @Step
-    public String getFirstNameInput_Value(){
+    public String getFirstNameInputValue(){
         return getInputFieldValue(firstName_Field);
     }
 
     @Step
-    public String getLastNameInput_Value(){
+    public String getLastNameInputValue(){
         return getInputFieldValue(lastName_Field);
     }
 
     @Step
-    public String getCellPhoneInput_Value(){
+    public String getCellPhoneInputValue(){
         return getInputFieldValue(cellPhone_Field);
     }
 

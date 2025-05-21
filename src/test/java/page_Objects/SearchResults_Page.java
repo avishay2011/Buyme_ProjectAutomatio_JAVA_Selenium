@@ -17,7 +17,7 @@ public class SearchResults_Page extends BasePage{
 
 
     @Step
-    public String getText_SearchResults(){
+    public String getTextSearchResults(){
         return getText(searchResults_HeadLine);
     }
 

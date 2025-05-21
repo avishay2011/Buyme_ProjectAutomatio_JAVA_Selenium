@@ -122,7 +122,7 @@ public class Registration_Page extends BasePage {
     public Registration_Page select_CountryCode(String countryCode){
         click(countriesCodes_Button);
         int count=0;
-        List<WebElement> countriesCodes_List=driver.findElements(countriesCode_List_Location);
+        List<WebElement> countriesCodes_List=getElementsFromListLocation(countriesCode_List_Location);
         for (WebElement elem: countriesCodes_List){
             if(elem.getText().equals("+"+countryCode)){
                elem.click();
@@ -149,48 +149,48 @@ public class Registration_Page extends BasePage {
     // =============================================
 
     @Step
-    public String getText_WrongNameErrorMessage(){
+    public String getTextWrongNameErrorMessage(){
         return getText(errorMessage_WrongName);
     }
 
-    public @Step String getColor_WrongNameErrorMessage(){
+    public @Step String getColorWrongNameErrorMessage(){
         return getColor(errorMessage_WrongName);
     }
 
     @Step
-    public String getText_WrongCellPhoneErrorMessage(){
+    public String getTextWrongCellPhoneErrorMessage(){
         return getText(errorMessageCellPhoneNumber);
     }
 
     @Step
-    public String getColor_WrongCellPhoneErrorMessage(){
+    public String getColorWrongCellPhoneErrorMessage(){
         return getColor(errorMessageCellPhoneNumber);
     }
 
     @Step
-    public String getText_iAgreeNotChecked_ErrorMessage(){
+    public String getTextiAgreeNotCheckedErrorMessage(){
         return getText(radioButtonNotChecked_ErrorMessage);
     }
 
     @Step
-    public String getColor_iAgreeNotChecked_ErrorMessage(){
+    public String getColoriAgreeNotCheckedErrorMessage(){
         return getColor(radioButtonNotChecked_ErrorMessage);
     }
 
 
 
     @Step
-    public String getInputFieldValue_Email(){
+    public String getInputFieldValueEmail(){
         return getInputFieldValue(email_Field);
     }
 
     @Step
-    public String getText_InvalidEmailErrorMessage(){
+    public String getTextInvalidEmailErrorMessage(){
         return getText(errorMessage_WrongEmail);
     }
 
     @Step
-    public String getColor_InvalidErrorMessage(){
+    public String getColorInvalidErrorMessage(){
         return getColor(errorMessage_WrongEmail);
     }
 

@@ -28,7 +28,7 @@ public class tests05_GiftsForEmployees extends BaseTest{
     @Description("Check not exists gift card Code and verify that the correct error message appears")
     public void test_OpenPageGiftsForEmplooyes() throws ParserConfigurationException, IOException, SAXException {
           homePage.navigateToGiftsForEmployees();
-          giftsForEmployees_page.click_JoinNowButton();
+          giftsForEmployees_page.clickJoinNowButton();
           Verifications.verifyTrue(giftsForEmployees_page.isEmployeesAmountFieldISDisplayed(),"Verify Elmployees amount field visibilty");
           Verifications.verifyTrue(driver.getCurrentUrl().contains(readFromThisFile("giftsForEmployeesPageUrl")),"Verify Gifts for employees page opens");
           Verifications.assertAll();

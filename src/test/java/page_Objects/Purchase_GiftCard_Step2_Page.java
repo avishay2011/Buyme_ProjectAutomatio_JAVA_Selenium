@@ -15,7 +15,7 @@ public class Purchase_GiftCard_Step2_Page extends BasePage{
 
     //Functions
 
-    public boolean isPurchasePage_Step2_HowToSend_Opened() throws ParserConfigurationException, IOException, SAXException { //The name price inside the url is indication that is step 1 in the purchase process
+    public boolean isPurchasePageStep2HowToSendOpened() throws ParserConfigurationException, IOException, SAXException { //The name price inside the url is indication that is step 1 in the purchase process
         return driver.getCurrentUrl().contains(readFromThisFile("purchasePageURL_Step1")) && driver.getCurrentUrl().contains(readFromThisFile("purchasePageURL_Step2"));
     }
 

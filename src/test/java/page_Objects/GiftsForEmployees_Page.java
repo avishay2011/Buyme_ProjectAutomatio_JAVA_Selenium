@@ -16,7 +16,7 @@ public class GiftsForEmployees_Page extends BasePage {
 
     //methods
     @Step
-    public GiftsForEmployees_Page click_JoinNowButton(){
+    public GiftsForEmployees_Page clickJoinNowButton(){
         click(joinNowButton);
         return this;
     }

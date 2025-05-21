@@ -6,13 +6,8 @@ import io.qameta.allure.model.Status;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.xml.sax.SAXException;
-
-import javax.xml.parsers.ParserConfigurationException;
-import java.io.IOException;
 import java.util.List;
 
-import static utils.Utilities.readFromThisFile;
 
 public class GiftCard_Balance_Page extends BasePage{
     public GiftCard_Balance_Page(WebDriver driver) {
@@ -40,7 +35,7 @@ public class GiftCard_Balance_Page extends BasePage{
      // =============================================
 
     @Step
-    public GiftCard_Balance_Page sendKeys_CouponField(String couponCode) throws ParserConfigurationException, IOException, SAXException {
+    public GiftCard_Balance_Page sendKeys_CouponField(String couponCode)  {
         sendKeys(giftCard_Code_Field,couponCode);
         return this;
     }
@@ -90,6 +85,9 @@ public class GiftCard_Balance_Page extends BasePage{
             click(nextMonth_Button);
             clicksCount ++;
         }
+        if (!getText(selectedMonthName).equals(month)) {
+            Allure.step("Failed to select month '" + month + "' after " + clicksCount + " clicks", Status.FAILED);
+        }
         return this;
     }
 
@@ -99,6 +97,9 @@ public class GiftCard_Balance_Page extends BasePage{
         while (!getText(selectedYearName).equals(year) && clicksCount <12 ) {
             click(nextYear_Button);
             clicksCount ++;
+        }
+        if (!getText(selectedYearName).equals(year)) {
+            Allure.step("Failed to select year '" + year + "' after " + clicksCount + " clicks", Status.FAILED);
         }
         return this;
     }

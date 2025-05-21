@@ -3,9 +3,6 @@ package page_Objects;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.xml.sax.SAXException;
-import javax.xml.parsers.ParserConfigurationException;
-import java.io.IOException;
 
 public class Coupon_Page extends BasePage {
 
@@ -25,18 +22,18 @@ public class Coupon_Page extends BasePage {
     //Functions
 
     @Step
-    public Coupon_Page click_Select() {
+    public Coupon_Page clickSelect() {
         click(select_Button);
         return this;
     }
 
     @Step
-    public Coupon_Page sendKeys_Amount(String couponAmount) throws ParserConfigurationException, IOException, SAXException {
+    public Coupon_Page sendKeysAmount(String couponAmount)  {
         sendKeys(amount_Field,couponAmount);
         return this;
     }
 
-    public String getText_DisplayedGiftCard(){
+    public String getTextDisplayedGiftCard(){
         return getText(giftCard_Name);
     }
 
@@ -48,18 +45,18 @@ public class Coupon_Page extends BasePage {
 
     @Step
     public boolean isAmountInputEnabled(){
-        return driver.findElement(amount_Field).isEnabled();
+        return waitVisibility(amount_Field).isEnabled();
     }
 
 
     @Step
-    public String getText_NoAmountEnteredErrorMessage(){
+    public String getTextNoAmountEnteredErrorMessage(){
         return getText(errorMessage_NoAmountEntered);
     }
 
 
     @Step
-    public String getColor_NoamountEnteredErrorMessage()  {
+    public String getColorNoamountEnteredErrorMessage()  {
         return getColor(errorMessage_NoAmountEntered);
     }
 

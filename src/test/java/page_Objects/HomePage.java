@@ -114,7 +114,7 @@ public class HomePage extends BasePage {
     }
 
     @Step
-    public HomePage click_FindMeGift(){
+    public HomePage clickFindMeGift(){
         click(findGift_Button);
         return this;
     }
@@ -153,7 +153,7 @@ public class HomePage extends BasePage {
     }
 
     @Step
-    public HomePage click_checkGiftCardBalance_Button(){
+    public HomePage clickcheckGiftCardBalanceButton(){
         click(checkGiftCardBalance_Button);
         return this;
     }
@@ -178,22 +178,22 @@ public class HomePage extends BasePage {
 
 
     @Step
-    public boolean areAll_AmountsDropdownValuesMatchExpected(){
+    public boolean areAllAmountsDropdownValuesMatchExpected(){
         return areDropdownValuesMatchExpected(DropDownValues.getExpectedAmounts(),dropDownList_Values);
     }
 
     @Step
-    public boolean areAll_RegionsDropdownValuesMatchExpected(){
+    public boolean areAllRegionsDropdownValuesMatchExpected(){
         return areDropdownValuesMatchExpected(DropDownValues.getExpectedRegions(),dropDownList_Values);
     }
 
     @Step
-    public boolean areAll_CategoriesDropdownValuesMatchExpected(){
+    public boolean areAllCategoriesDropdownValuesMatchExpected(){
         return areDropdownValuesMatchExpected(DropDownValues.getExpectedCategories(),dropDownList_Values);
     }
 
     @Step
-    public boolean isDropdownList_Is_Visible(){ //Check that the dropdown opened,Only one dropdown can be opened on the same time so the same method can be used for all dropdowns .
+    public boolean isDropdownListIsVisible(){ //Check that the dropdown opened,Only one dropdown can be opened on the same time so the same method can be used for all dropdowns .
         //  have another steps more specific that verify that each dropdown also contains the correct values
         try {
              return driver.findElement(dropDownList_Values).isDisplayed();

@@ -82,13 +82,13 @@ public class Purchase_GiftCard_Step1_Page extends BasePage{
     // =============================================
 
     @Step
-    public boolean isPurchasePage_Step1_Opened() throws ParserConfigurationException, IOException, SAXException { //The name price inside the url is indication that is step 1 in the purchase process
+    public boolean isPurchasePageStep1Opened() throws ParserConfigurationException, IOException, SAXException { //The name price inside the url is indication that is step 1 in the purchase process
         return isElementDisplayed(firstStep_Title) && driver.getCurrentUrl().contains(readFromThisFile("purchasePageURL_Step1"));
     }
 
 
     @Step
-    public boolean areAll_ExpectedElements_Displayed(){
+    public boolean areAllExpectedElementsDisplayed(){
         Map<String, By> elementsMap = Map.of(
                 "Gift Receiver Name Field", giftReciever_Name,
                 "Celebration Dropdown Button", whatAreWeCelebrating_Dropdown_Button,
@@ -123,7 +123,7 @@ public class Purchase_GiftCard_Step1_Page extends BasePage{
     }
 
     @Step
-    public String getText_giftCardForMyself_Message(){
+    public String getTextgiftCardForMyselfMessage(){
         return getText(giftForMySelf_Message);
     }
 

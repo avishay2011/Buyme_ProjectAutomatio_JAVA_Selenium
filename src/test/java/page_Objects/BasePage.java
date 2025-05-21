@@ -30,12 +30,17 @@ public class BasePage {
             element.click();
             Allure.step("Clicking on element " + elementLocation.toString());
         }
-        catch (Exception error){
-            Allure.step("Clicking failed: " + error.getMessage(), Status.FAILED);
+        catch (NoSuchElementException | TimeoutException error){
+            Allure.step("Clicking failed: Element not found or timeout " + error.getMessage(), Status.FAILED);
             takeScreenShot(driver);
-            throw new RuntimeException("Click failed on element: " + elementLocation, error);
+            throw error;
         }
+       catch (Exception error) {
+        Allure.step("Clicking failed: Unexpected error - " + error.getMessage(), Status.FAILED);
+        takeScreenShot(driver);
+        throw new RuntimeException("Click failed on element: " + elementLocation, error);
     }
+}
 
 
     public void sendKeys(By elementLocation, String text) {
@@ -45,11 +50,16 @@ public class BasePage {
             element.sendKeys(text);
             Allure.step("Sending keys to the element " + elementLocation.toString());
         }
-        catch (Exception error){
-           Allure.step("Sending keys failed: " + error.getMessage(), Status.FAILED);
-           takeScreenShot(driver);
-           throw new RuntimeException("Send keys failed on element: " + elementLocation, error);
-       }
+        catch (NoSuchElementException | TimeoutException error){
+            Allure.step("Sending keys failed: : Element not found or timeout" + error.getMessage(), Status.FAILED);
+            takeScreenShot(driver);
+            throw  error;
+        }
+        catch (Exception error) {
+            Allure.step("Send keys failed: Unexpected error - " + error.getMessage(), Status.FAILED);
+            takeScreenShot(driver);
+            throw error;
+        }
     }
 
 
@@ -60,11 +70,21 @@ public class BasePage {
             action.moveToElement(element).build().perform();
             Allure.step("Hovering to element " + elementLocation.toString());
         }
-        catch (Exception error){
-            Allure.step("Hovering to element failed " + error.getMessage(), Status.FAILED);
+        catch (NoSuchElementException | TimeoutException error){
+            Allure.step("Hovering to element failed: : Element not found or timeout" + error.getMessage(), Status.FAILED);
             takeScreenShot(driver);
-            throw new RuntimeException("Hover to element failed on element: " + elementLocation, error);
+            throw  error;
         }
+        catch (Exception error) {
+            Allure.step("Send keys failed: Unexpected error - " + error.getMessage(), Status.FAILED);
+            takeScreenShot(driver);
+            throw error;
+        }
+    }
+
+    public List<WebElement> getElementsFromListLocation(By locator) {
+        waitVisibility(locator);
+        return driver.findElements(locator);
     }
 
     /// Get  text,css values and attributes
@@ -201,7 +221,7 @@ public class BasePage {
         } catch (InterruptedException error) {
             error.printStackTrace();
         }
-        return wait.until(ExpectedConditions.visibilityOf(driver.findElement(elementLocation)));
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(elementLocation));
     }
 }
 

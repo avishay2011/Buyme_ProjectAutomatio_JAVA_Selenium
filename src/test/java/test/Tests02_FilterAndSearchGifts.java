@@ -22,21 +22,21 @@ public class Tests02_FilterAndSearchGifts extends BaseTest {
         Assert.assertTrue(homePage.pageLoadedWithNoErrors());
         Assert.assertTrue(homePage.homePageIsDisplayed());
         homePage.openAmounts_Dropdown();
-        Verifications.verifyTrue(homePage.isDropdownList_Is_Visible(),"Verify amounts dropdown list appears"); //check the last dropdown that opened -check amounts dropdown
-        Verifications.verifyTrue(homePage.areAll_AmountsDropdownValuesMatchExpected(),"Verify that all the amounts values on dropdown are as expected");
+        Verifications.verifyTrue(homePage.isDropdownListIsVisible(),"Verify amounts dropdown list appears"); //check the last dropdown that opened -check amounts dropdown
+        Verifications.verifyTrue(homePage.areAllAmountsDropdownValuesMatchExpected(),"Verify that all the amounts values on dropdown are as expected");
         homePage.selectAmount(readFromThisFile("amount"));
         homePage.openRegions_Dropdown();
-        Verifications.verifyTrue(homePage.isDropdownList_Is_Visible(),"Verify regions dropdown list appears");//-check region dropdown
-        Verifications.verifyTrue(homePage.areAll_RegionsDropdownValuesMatchExpected(),"Verify that all the regions values on dropdown are as expected ");
+        Verifications.verifyTrue(homePage.isDropdownListIsVisible(),"Verify regions dropdown list appears");//-check region dropdown
+        Verifications.verifyTrue(homePage.areAllRegionsDropdownValuesMatchExpected(),"Verify that all the regions values on dropdown are as expected ");
         homePage.selectRegion(readFromThisFile("region"));
         homePage.openCategories_Dropdown();
-        Verifications.verifyTrue(homePage.isDropdownList_Is_Visible(),"Verify categories dropdown list appears");//check the last dropdown that opened -check categories dropdown
-        Verifications.verifyTrue(homePage.areAll_CategoriesDropdownValuesMatchExpected(),"Verify that all the category values on dropdown are as expected ");
+        Verifications.verifyTrue(homePage.isDropdownListIsVisible(),"Verify categories dropdown list appears");//check the last dropdown that opened -check categories dropdown
+        Verifications.verifyTrue(homePage.areAllCategoriesDropdownValuesMatchExpected(),"Verify that all the category values on dropdown are as expected ");
         homePage.selectCategory(readFromThisFile("category"));
-        homePage.click_FindMeGift();
-        Verifications.verifyTrue(searchResults_page.getText_SearchResults().contains(readFromThisFile("amount")),  "Has the amount value for search included in results"); ///Check that the correct amount appears on results
-        Verifications.verifyTrue(searchResults_page.getText_SearchResults().contains(readFromThisFile("region")),  "Has the region value for search included in results");///Check that the correct region appears on results
-        Verifications.verifyTrue(searchResults_page.getText_SearchResults().contains(readFromThisFile("category")),"Has the region category value for search included in results");///Check that the correct category appears on results
+        homePage.clickFindMeGift();
+        Verifications.verifyTrue(searchResults_page.getTextSearchResults().contains(readFromThisFile("amount")),  "Has the amount value for search included in results"); ///Check that the correct amount appears on results
+        Verifications.verifyTrue(searchResults_page.getTextSearchResults().contains(readFromThisFile("region")),  "Has the region value for search included in results");///Check that the correct region appears on results
+        Verifications.verifyTrue(searchResults_page.getTextSearchResults().contains(readFromThisFile("category")),"Has the region category value for search included in results");///Check that the correct category appears on results
     }
 
     @Test
