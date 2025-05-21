@@ -91,7 +91,6 @@ public class Purchase_GiftCard_Step1_Page extends BasePage{
     @Step
     public boolean areAllExpectedElementsDisplayed(){
         Map<String, By> elementsMap = DropDownValues_And_ElementsMap.getElementsMap();
-
         boolean areAllElementsDisplayed = true;
         for (Map.Entry<String, By> entry : elementsMap.entrySet()) {
             String elementName = entry.getKey();
