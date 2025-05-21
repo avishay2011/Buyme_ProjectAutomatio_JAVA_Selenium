@@ -1,0 +1,2 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+" ","3565","test01_ErrorMessage_Not_Valid_Email","Surefire suite","Wed May 07 23:30:15 IDT 2025","passed","Wed May 07 23:30:19 IDT 2025","test.Tests01_Registration","Surefire test","test.Tests01_Registration","test01_ErrorMessage_Not_Valid_Email"

@@ -1,0 +1,64 @@
+<root>
+    //Browser
+    <browser>chrome</browser>
+
+    //URL , titles, messages,errors and current url
+    <url>https://buyme.co.il/</url>
+    <errorMessageWrongName>יש למלא שם מלא</errorMessageWrongName>
+    <errorMessageWrongCellPhoneNumber>המספר שהזנת אינו תקין</errorMessageWrongCellPhoneNumber>
+    <errorMessageIagreeNotChecked>על מנת להמשיך בתהליך עליך לאשר את תנאי השימוש באתר ומדיניות הפרטיות</errorMessageIagreeNotChecked>
+    <registrationurl>https://buyme.co.il/?modal=login</registrationurl>
+    <mailiNatorurl>https://www.mailinator.com</mailiNatorurl>
+    <errorMessageWrongEmail>ערך זה צריך להיות כתובת אימייל.</errorMessageWrongEmail>
+    <CouponPage_NoAmountEntered_Error>ערך זה דרוש</CouponPage_NoAmountEntered_Error>
+    <picToLoadPath>C:\Users\avish\IdeaProjects\BuyMe\src\testData\1.jpg</picToLoadPath>
+    <purchasePageURL_Step1>https://buyme.co.il/money/</purchasePageURL_Step1>
+    <purchasePageURL_Step2>step=2</purchasePageURL_Step2>
+    <rgba_Value_Of_Red>rgba(240, 31, 57, 1)</rgba_Value_Of_Red>
+    <giftForMySelf_Message>הכי הכי כיף להתפנק במתנה לעצמך!</giftForMySelf_Message>
+    <giftsForEmployeesPageUrl>https://buyme.co.il/business</giftsForEmployeesPageUrl>
+
+
+
+    //inputs'
+    <wrongInputFirstName>12343</wrongInputFirstName>
+    <wrongInputLastName></wrongInputLastName>
+    <wrongInputCellPhoneNumber>popoloq</wrongInputCellPhoneNumber>
+    <firstName>Avi</firstName>
+    <lastName>Ave</lastName>
+    <countryCode>230</countryCode>
+    <cellPhoneNumber>57216430</cellPhoneNumber>
+    <registeredEmail>Avishay2011@Gmail.com</registeredEmail>
+    <amount>200-299</amount>
+    <region>דרום</region>
+    <category>גיפט קארד למסעדות שף</category>
+    <giftCardName>buyme chef</giftCardName>
+    <mailiNator_Annotation>@mailinator.com</mailiNator_Annotation>
+    <wrongEmail>avishay2011!!!!gmail.com</wrongEmail>
+    <couponAmount>200</couponAmount>
+    <giftRecieverName>avishay</giftRecieverName>
+    <blessing>מזל טוב ועד 120</blessing>
+    ///Wrong Coupon Code
+    <couponCode>1234123412341234</couponCode>
+    <expirationDay>25</expirationDay>
+    <expirationMonth>אוגוסט</expirationMonth>
+    <expirationYear>2027</expirationYear>
+
+    <wrongGiftCardCode_ErrorMessage>אחד או יותר מהפרטים שהזנת שגויים</wrongGiftCardCode_ErrorMessage>
+    <whatisExpiration_Text>מה תוקף השובר?</whatisExpiration_Text>
+    <whatisCode_Text>מה הקוד של השובר?</whatisCode_Text>
+    ///Real Coupon Code-Allready used
+    <existsUsedCouponCode>9376110900004940</existsUsedCouponCode>
+    <existsUsedCouponExpiration_year>2027</existsUsedCouponExpiration_year>
+    <existsUsedCouponExpiration_month>מאי</existsUsedCouponExpiration_month>
+    <existsUsedCouponExpiration_day>29</existsUsedCouponExpiration_day>
+    <giftCardAllreadyUsed_BalanceMessage>השובר מומש במלואו, מקווים שנהנית!</giftCardAllreadyUsed_BalanceMessage>
+    ///Real and valid coupon code - 25 sheqels
+    <validCouponCode>9376111422640955</validCouponCode>
+    <validCouponExpiration_year>2030</validCouponExpiration_year>
+    <validCouponExpiration_month>מאי</validCouponExpiration_month>
+    <validCouponExpiration_day>15</validCouponExpiration_day>
+    <giftCard_Valid_Balance>₪25</giftCard_Valid_Balance>
+
+
+</root>
