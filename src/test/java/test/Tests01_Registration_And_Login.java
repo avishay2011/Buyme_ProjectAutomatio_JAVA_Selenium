@@ -32,7 +32,7 @@ Tests01_Registration_And_Login extends BaseTest {
     @Severity(SeverityLevel.CRITICAL)
     @Description("Start the registration process .get to the registration form and verify that the correct error messages appears after insert wrong values")
     public void test01_NotValidRegistration() throws ParserConfigurationException, IOException, SAXException {
-        homePage.navigateTo_Registration_Page();
+        homePage.navigateToRegistrationPage();
         Assert.assertTrue(registration_Page.registrationPageIsDisplayed());
         registration_Page.select_Register_By_Email();
         String registrationTab1_InsertEmail = getCurrentTabHandle();
@@ -66,7 +66,7 @@ Tests01_Registration_And_Login extends BaseTest {
     @Severity(SeverityLevel.CRITICAL)
     @Description("Complete the registration process with valid inputs and verify that log in made with the new account, and check that the account details match the inputs that provided   ")
     public void test02_Registration() throws ParserConfigurationException, IOException, SAXException {
-        homePage.navigateTo_Registration_Page();
+        homePage.navigateToRegistrationPage();
         Assert.assertTrue(registration_Page.registrationPageIsDisplayed());
         registration_Page.select_Register_By_Email();
         String registrationTab1_InsertEmail = getCurrentTabHandle();
@@ -87,7 +87,7 @@ Tests01_Registration_And_Login extends BaseTest {
         registration_Page.sendKeys_CellPhoneNumber(readFromThisFile("cellPhoneNumber"));
         registration_Page.click_IAgree_PrivacyPolicy();
         registration_Page.click_Register_Button();
-        homePage.navigateTo_MyAccountDetails_Page();
+        homePage.navigateToMyAccountDetailsPage();
         Verifications.verifyTextEquals(myAccountDetails_page.getFirstNameInputValue(),readFromThisFile("firstName"),"Text appears on firstName field");
         Verifications.verifyTextEquals(myAccountDetails_page.getLastNameInputValue(),readFromThisFile( "lastName"), "Text appears on firstName field");
         Verifications.verifyTextEquals(myAccountDetails_page.getCellPhoneInputValue(),readFromThisFile("cellPhoneNumber")+" "+readFromThisFile("countryCode")+"+","Text appears on cellphone field");
@@ -99,7 +99,7 @@ Tests01_Registration_And_Login extends BaseTest {
     @Description("Login with not valid email and verify that expected error message appears ")
     public void test03_ErrorMessage_Not_Valid_Email() throws ParserConfigurationException, IOException, SAXException {
         homePage.logOut();
-        homePage.navigateTo_Registration_Page();
+        homePage.navigateToRegistrationPage();
         Assert.assertTrue(registration_Page.registrationPageIsDisplayed());
         registration_Page.select_Register_By_Email();
         registration_Page.sendKeys_Email_Field(readFromThisFile("wrongEmail"));
@@ -117,7 +117,7 @@ Tests01_Registration_And_Login extends BaseTest {
     @Description("Entered to web with a user that allready registered and verify that login made after got otp code ")
     public void test04_Login_with_registered_email() throws ParserConfigurationException, IOException, SAXException {
         homePage.logOut();
-        homePage.navigateTo_Registration_Page();
+        homePage.navigateToRegistrationPage();
         Assert.assertTrue(registration_Page.registrationPageIsDisplayed());
         registration_Page.select_Register_By_Email();
         registration_Page.enter_By_Email(randomString + readFromThisFile("mailiNator_Annotation"));
@@ -132,7 +132,7 @@ Tests01_Registration_And_Login extends BaseTest {
         registration_Page.clickEnter_AfterLoginProcess();
         registration_Page.verify_SMS_OtpCode();
         Verifications.verifyTrue(homePage.homePageIsDisplayed(),"Is home page displayed");
-        homePage.navigateTo_MyAccountDetails_Page();
+        homePage.navigateToMyAccountDetailsPage();
         Verifications.verifyTextEquals(myAccountDetails_page.getFirstNameInputValue(),readFromThisFile("firstName"),"Text on first name field");
         Verifications.verifyTextEquals(myAccountDetails_page.getLastNameInputValue(),readFromThisFile( "lastName"), "Text on last name field");
         Verifications.verifyTextEquals(myAccountDetails_page.getCellPhoneInputValue(),readFromThisFile("cellPhoneNumber")+" "+readFromThisFile("countryCode")+"+","Text on cellphone field");

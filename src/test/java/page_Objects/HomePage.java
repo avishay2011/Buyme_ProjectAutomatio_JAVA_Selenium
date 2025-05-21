@@ -3,10 +3,9 @@ package page_Objects;
 
 
 
-import io.qameta.allure.Allure;
 import io.qameta.allure.Step;
 import org.openqa.selenium.*;
-import utils.DropDownValues;
+import utils.DropDownValues_And_ElementsMap;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,7 +39,7 @@ public class HomePage extends BasePage {
     // =============== Actions =====================
     // =============================================
     @Step
-    public HomePage navigateTo_Registration_Page(){
+    public HomePage navigateToRegistrationPage(){
         click(login_Button);
         return this;
     }
@@ -53,7 +52,7 @@ public class HomePage extends BasePage {
     }
 
     @Step
-    public HomePage navigateTo_MyAccountDetails_Page(){
+    public HomePage navigateToMyAccountDetailsPage(){
          hoverToElement(myAccount_DropDown);
          click(myAccount_Details);
          return this;
@@ -179,17 +178,17 @@ public class HomePage extends BasePage {
 
     @Step
     public boolean areAllAmountsDropdownValuesMatchExpected(){
-        return areDropdownValuesMatchExpected(DropDownValues.getExpectedAmounts(),dropDownList_Values);
+        return areDropdownValuesMatchExpected(DropDownValues_And_ElementsMap.getExpectedAmounts(),dropDownList_Values);
     }
 
     @Step
     public boolean areAllRegionsDropdownValuesMatchExpected(){
-        return areDropdownValuesMatchExpected(DropDownValues.getExpectedRegions(),dropDownList_Values);
+        return areDropdownValuesMatchExpected(DropDownValues_And_ElementsMap.getExpectedRegions(),dropDownList_Values);
     }
 
     @Step
     public boolean areAllCategoriesDropdownValuesMatchExpected(){
-        return areDropdownValuesMatchExpected(DropDownValues.getExpectedCategories(),dropDownList_Values);
+        return areDropdownValuesMatchExpected(DropDownValues_And_ElementsMap.getExpectedCategories(),dropDownList_Values);
     }
 
     @Step

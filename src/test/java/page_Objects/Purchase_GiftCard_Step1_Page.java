@@ -9,6 +9,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.xml.sax.SAXException;
+import utils.DropDownValues_And_ElementsMap;
 
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
@@ -89,37 +90,30 @@ public class Purchase_GiftCard_Step1_Page extends BasePage{
 
     @Step
     public boolean areAllExpectedElementsDisplayed(){
-        Map<String, By> elementsMap = Map.of(
-                "Gift Receiver Name Field", giftReciever_Name,
-                "Celebration Dropdown Button", whatAreWeCelebrating_Dropdown_Button,
-                "Blessing Free Text Field", blessingFreeText_Field,
-                "Add Picture or Video Button", addPicOrVideo_Button,
-                "Add Built-in Video Button", add_BuiltIn_Video_Button,
-                "Continue Button", continue_Button
-        );
+        Map<String, By> elementsMap = DropDownValues_And_ElementsMap.getElementsMap();
 
-        boolean areALLElementsDisplayed=true;
+        boolean areAllElementsDisplayed = true;
         for (Map.Entry<String, By> entry : elementsMap.entrySet()) {
             String elementName = entry.getKey();
             By locator = entry.getValue();
             try {
                 if (!driver.findElement(locator).isDisplayed()) {
                     Allure.step("❌ Element not displayed: " + elementName, Status.FAILED);
-                    areALLElementsDisplayed = false;
+                    areAllElementsDisplayed = false;
                     Assert.fail();
                 }
             } catch (NoSuchElementException error) {
                 Allure.step("❌ Element not found in DOM: " + elementName, Status.FAILED);
-                areALLElementsDisplayed = false;
+                areAllElementsDisplayed = false;
                 Assert.fail();
             }
         }
 
-        if (areALLElementsDisplayed) {
+        if (areAllElementsDisplayed) {
             Allure.step("✅ All expected elements are displayed");
         }
 
-        return areALLElementsDisplayed;
+        return areAllElementsDisplayed;
     }
 
     @Step

@@ -1,10 +1,13 @@
 package utils;
 
 
+import org.openqa.selenium.By;
+
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
-public class DropDownValues {
+public class DropDownValues_And_ElementsMap {
 
     public static List<String> getExpectedAmounts() {
         return Arrays.asList(
@@ -54,6 +57,17 @@ public class DropDownValues {
                 "גיפט קארד לבריאות, ספורט ואקסטרים",
                 "גיפט קארד לסדנאות והעשרה",
                 "גיפט קארד ליופי וטיפוח"
+        );
+    }
+
+    public static Map<String, By> getElementsMap() {
+        return Map.of(
+                "Gift Receiver Name Field", By.id("שם מקבל המתנה-friendName"),
+                "Celebration Dropdown Button", By.cssSelector(".b2c-dropdown__wrapper__icon"),
+                "Blessing Free Text Field", By.id("greeting-b2c-textarea"),
+                "Add Picture or Video Button", By.id("add-pic-selection_button__input"),
+                "Add Built-in Video Button", By.id("custom-selection-button"),
+                "Continue Button", By.cssSelector("button[type=\"submit\"]")
         );
     }
 }
