@@ -16,7 +16,7 @@ import java.io.IOException;
 import static utils.Utilities.readFromThisFile;
 
 @Listeners(utils.Listeners.class)
-public class tests04_Check_Gift_Card_Balance extends BaseTest {
+public class Tests04_Check_Gift_Card_Balance extends BaseTest {
 
     @BeforeMethod
     public void checkPageReadyAndPreConditions() throws ParserConfigurationException, IOException, SAXException {

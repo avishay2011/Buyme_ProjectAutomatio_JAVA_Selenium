@@ -14,7 +14,7 @@ import java.io.IOException;
 import static utils.Utilities.readFromThisFile;
 
 @Listeners(utils.Listeners.class)
-public class tests05_GiftsForEmployees extends BaseTest{
+public class Tests05_GiftsForEmployees extends BaseTest{
 
     @BeforeMethod
     @Severity(SeverityLevel.BLOCKER)
