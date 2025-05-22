@@ -29,7 +29,6 @@ public class Purchase_GiftCard_Step1_Page extends BasePage{
     private By whatAreWeCelebrating_Dropdown_Button=By.cssSelector(".b2c-dropdown__wrapper__icon");
     private By blessingFreeText_Field=By.id("greeting-b2c-textarea");
     private By addPicOrVideo_Button=By.id("add-pic-selection_button__input");
-    private By add_BuiltIn_Video_Button=By.id("custom-selection-button");
     private By continue_Button=By.cssSelector("button[type=\"submit\"]");
     private By celebrationsReasons_List=By.cssSelector("ul[role=\"listbox\"]>li");
     private By forMySelf_Button=By.id("לעצמי-forMyself");
@@ -89,8 +88,8 @@ public class Purchase_GiftCard_Step1_Page extends BasePage{
 
 
     @Step
-    public boolean areAllExpectedElementsDisplayed(){
-        Map<String, By> elementsMap = DropDownValues_And_ElementsMap.getElementsMap();
+    public boolean areAllExpectedElementsDisplayed(){  ///Map include string that contains name and that contains location
+        Map<String, By> elementsMap = DropDownValues_And_ElementsMap.getElementsMap(); //If element (found by location) not displayed return false , fail the method and report allure with the element name
         boolean areAllElementsDisplayed = true;
         for (Map.Entry<String, By> entry : elementsMap.entrySet()) {
             String elementName = entry.getKey();
