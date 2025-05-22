@@ -7,8 +7,8 @@
       <class name="test.Tests01_Registration_And_Login"/>
       <class name="test.Tests02_FilterAndSearchGifts"/>
       <class name="test.Tests03_SelectGift"/>
-      <class name="test.tests04_Check_Gift_Card_Balance"></class>
-      <class name="test.tests05_GiftsForEmployees"></class>
+      <class name="test.tests04_Check_Gift_Card_Balance"/>
+      <class name="test.tests05_GiftsForEmployees"/>
     </classes >
   </test> <!-- Test -->
 </suite> <!-- Suite -->
