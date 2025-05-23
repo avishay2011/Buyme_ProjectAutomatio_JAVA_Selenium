@@ -27,6 +27,7 @@ public class BasePage {
     public void click(By elementLocation) {
         try {
             WebElement element=waitVisibility(elementLocation);
+            highlightElementForShortTime(element);
             element.click();
             Allure.step("Clicking on element " + elementLocation.toString());
         }
@@ -46,6 +47,7 @@ public class BasePage {
     public void sendKeys(By elementLocation, String text) {
         try {
             WebElement element=waitVisibility(elementLocation);
+            highlightElementForShortTime(element);
             element.clear();
             element.sendKeys(text);
             Allure.step("Sending keys to the element " + elementLocation.toString());
@@ -213,6 +215,28 @@ public class BasePage {
         return true;
     }
 
+    protected void highlightElementForShortTime(WebElement element) {  ///Method for make background field with bright yellow and the text bold
+        String originalStyle = element.getAttribute("style");
+        String newStyle = "background-color: #FFF68F; " +  // Banana Yellow
+                "border: 1px solid red; " +
+                "font-weight: bold; " +
+                "color: initial; " +
+                originalStyle;
+
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+
+        js.executeScript(
+                "var tmpArguments = arguments;" +
+                        "setTimeout(function () {tmpArguments[0].setAttribute('style', '" + newStyle + "');}, 0);",
+                element
+        );
+
+        js.executeScript(
+                "var tmpArguments = arguments;" +
+                        "setTimeout(function () {tmpArguments[0].setAttribute('style', '" + originalStyle + "');}, 600);",
+                element
+        );
+    }
 
     /// Wait method
     public WebElement waitVisibility(By elementLocation) {
