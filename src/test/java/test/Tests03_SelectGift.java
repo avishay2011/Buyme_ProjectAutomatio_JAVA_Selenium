@@ -16,7 +16,6 @@ import java.io.IOException;
 import static utils.Utilities.readFromThisFile;
 
 @Listeners(utils.Listeners.class)
-@Epic("Tests 03 :Select gift")
 public class Tests03_SelectGift extends BaseTest{
     @BeforeMethod
     public void checkPageReadyAndPreConditions() throws ParserConfigurationException, IOException, SAXException {
