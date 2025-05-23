@@ -17,7 +17,6 @@ import static utils.Utilities.readFromThisFile;
 
 
 @Listeners(utils.Listeners.class)
-@Epic("01")
 public class
 
 Tests01_Registration_And_Login extends BaseTest {

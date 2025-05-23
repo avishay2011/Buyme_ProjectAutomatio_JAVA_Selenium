@@ -16,7 +16,6 @@ import java.io.IOException;
 import static utils.Utilities.readFromThisFile;
 
 @Listeners(utils.Listeners.class)
-@Epic("02")
 public class Tests02_FilterAndSearchGifts extends BaseTest {
 
     @BeforeMethod

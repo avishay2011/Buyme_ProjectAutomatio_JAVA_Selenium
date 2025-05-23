@@ -17,7 +17,6 @@ import java.io.IOException;
 import static utils.Utilities.readFromThisFile;
 
 @Listeners(utils.Listeners.class)
-@Epic("04")
 public class Tests04_Check_Gift_Card_Balance extends BaseTest {
 
     @BeforeMethod
