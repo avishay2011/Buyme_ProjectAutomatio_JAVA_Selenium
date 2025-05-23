@@ -22,12 +22,6 @@ public class Tests02_FilterAndSearchGifts extends BaseTest {
     public void checkPageReadyAndPreConditions() throws ParserConfigurationException, IOException, SAXException {
         Assert.assertTrue(homePage.pageLoadedWithNoErrors());
         Assert.assertTrue(homePage.homePageIsDisplayed());
-    }
-
-    @Test
-    @Severity(SeverityLevel.NORMAL)
-    @Description("Filter potential gifts and verify that only the relevant gifts appears on list after filter ") //The same filtering process is performed at the beginning of both tests.
-    public void test01_Filter_And_Search_Gifts() throws ParserConfigurationException, IOException, SAXException {
         homePage.openAmounts_Dropdown();
         Verifications.verifyTrue(homePage.isDropdownListIsVisible(),"Verify amounts dropdown list appears"); //check the last dropdown that opened -check amounts dropdown
         Verifications.verifyTrue(homePage.areAllAmountsDropdownValuesMatchExpected(),"Verify that all the amounts values on dropdown are as expected");
@@ -41,6 +35,12 @@ public class Tests02_FilterAndSearchGifts extends BaseTest {
         Verifications.verifyTrue(homePage.areAllCategoriesDropdownValuesMatchExpected(),"Verify that all the category values on dropdown are as expected ");
         homePage.selectCategory(readFromThisFile("category"));
         homePage.clickFindMeGift();
+    }
+
+    @Test
+    @Severity(SeverityLevel.NORMAL)
+    @Description("Filter potential gifts and verify that only the relevant gifts appears on list after filter ") //The same filtering process is performed at the beginning of both tests.
+    public void test01_Filter_And_Search_Gifts() throws ParserConfigurationException, IOException, SAXException {
         Verifications.verifyTrue(searchResults_page.getTextSearchResults().contains(readFromThisFile("amount")),  "Has the amount value for search included in results"); ///Check that the correct amount appears on results
         Verifications.verifyTrue(searchResults_page.getTextSearchResults().contains(readFromThisFile("region")),  "Has the region value for search included in results");///Check that the correct region appears on results
         Verifications.verifyTrue(searchResults_page.getTextSearchResults().contains(readFromThisFile("category")),"Has the region category value for search included in results");///Check that the correct category appears on results//The first test only verifies that all conditions from the @BeforeMethod are met."
@@ -52,19 +52,6 @@ public class Tests02_FilterAndSearchGifts extends BaseTest {
     @Severity(SeverityLevel.NORMAL)
     @Description("Clear filter fields and verify that all the filter selections have made resets to default")
     public void test02_Filter_And_Clear_Filter_Fields() throws ParserConfigurationException, IOException, SAXException {
-        homePage.openAmounts_Dropdown();
-        Verifications.verifyTrue(homePage.isDropdownListIsVisible(),"Verify amounts dropdown list appears"); //check the last dropdown that opened -check amounts dropdown
-        Verifications.verifyTrue(homePage.areAllAmountsDropdownValuesMatchExpected(),"Verify that all the amounts values on dropdown are as expected");
-        homePage.selectAmount(readFromThisFile("amount"));
-        homePage.openRegions_Dropdown();
-        Verifications.verifyTrue(homePage.isDropdownListIsVisible(),"Verify regions dropdown list appears");//-check region dropdown
-        Verifications.verifyTrue(homePage.areAllRegionsDropdownValuesMatchExpected(),"Verify that all the regions values on dropdown are as expected ");
-        homePage.selectRegion(readFromThisFile("region"));
-        homePage.openCategories_Dropdown();
-        Verifications.verifyTrue(homePage.isDropdownListIsVisible(),"Verify categories dropdown list appears");//check the last dropdown that opened -check categories dropdown
-        Verifications.verifyTrue(homePage.areAllCategoriesDropdownValuesMatchExpected(),"Verify that all the category values on dropdown are as expected ");
-        homePage.selectCategory(readFromThisFile("category"));
-        homePage.clickFindMeGift();
         Verifications.verifyTrue(searchResults_page.getTextSearchResults().contains(readFromThisFile("amount")),  "Has the amount value for search included in results"); ///Check that the correct amount appears on results
         Verifications.verifyTrue(searchResults_page.getTextSearchResults().contains(readFromThisFile("region")),  "Has the region value for search included in results");///Check that the correct region appears on results
         Verifications.verifyTrue(searchResults_page.getTextSearchResults().contains(readFromThisFile("category")),"Has the region category value for search included in results");///Check that the correct category appears on results
