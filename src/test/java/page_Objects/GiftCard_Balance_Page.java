@@ -1,6 +1,7 @@
 package page_Objects;
 
 import io.qameta.allure.Allure;
+import io.qameta.allure.Description;
 import io.qameta.allure.Step;
 import io.qameta.allure.model.Status;
 import org.openqa.selenium.By;
@@ -35,6 +36,7 @@ public class GiftCard_Balance_Page extends BasePage{
      // =============================================
 
     @Step
+    @Description("Send keys - Coupon code :  {couponCode}")
     public GiftCard_Balance_Page sendKeys_CouponField(String couponCode)  {
         sendKeys(giftCard_Code_Field,couponCode);
         return this;
@@ -53,6 +55,7 @@ public class GiftCard_Balance_Page extends BasePage{
     }
 
     @Step
+    @Description("Select a date  by day,month,year :  {day} , {month} , {year}")
     public GiftCard_Balance_Page select_Date_Picker(String day,String month,String year) throws InterruptedException {
         select_Month_DatePicker(month);
         select_Year_DatePicker(year);

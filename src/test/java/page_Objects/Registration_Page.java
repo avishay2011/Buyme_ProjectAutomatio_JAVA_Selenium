@@ -2,6 +2,7 @@
 package page_Objects;
 
 
+import io.qameta.allure.Description;
 import io.qameta.allure.Step;
 import org.openqa.selenium.*;
 import org.xml.sax.SAXException;
@@ -61,7 +62,8 @@ public class Registration_Page extends BasePage {
     }
 
 
-    @Step("")
+    @Step
+    @Description("Send keys -email -  {email} ")
     public Registration_Page sendKeys_Email_Field(String email){
         sendKeys(email_Field,email);
         return this;
@@ -75,6 +77,7 @@ public class Registration_Page extends BasePage {
 
 
     @Step
+    @Description("Navigate to mailinator page - for get a password or create a new user  ")
     public Registration_Page navigateToMailiNator() throws ParserConfigurationException, IOException, SAXException { /// Using the service of mailinator for create demo email address and sent it for verificatin on buyme registration proccess
         driver.switchTo().newWindow(WindowType.TAB);
         driver.get(readFromThisFile("mailiNatorurl"));
@@ -107,18 +110,21 @@ public class Registration_Page extends BasePage {
 
 
     @Step
+    @Description("Send keys full name {firstName} , {lastName} ")
     public Registration_Page sendKeys_FullName(String firstName,String lastName) throws ParserConfigurationException, IOException, SAXException {
         sendKeys(name_Field,firstName+" "+lastName);
         return this;
     }
 
     @Step
+    @Description("Send keys cell phone - {cellPhone} ")
     public Registration_Page sendKeys_CellPhoneNumber(String cellPhone){
         sendKeys(cellPhoneNum_Field,cellPhone );
         return this;
     }
 
     @Step
+    @Description("Select country code  - {countryCode} ")
     public Registration_Page select_CountryCode(String countryCode){
         click(countriesCodes_Button);
         int count=0;
@@ -195,6 +201,7 @@ public class Registration_Page extends BasePage {
     }
 
     @Step
+    @Description("Verify by expected url and unique element that registration page opened ")
     public boolean registrationPageIsDisplayed() throws ParserConfigurationException, IOException, SAXException {  // verify that the right page loaded by  elem location that unique for this page
         return driver.getCurrentUrl().equalsIgnoreCase(readFromThisFile("registrationurl")) && isElementDisplayed(logInByGoogle_Link);
     }

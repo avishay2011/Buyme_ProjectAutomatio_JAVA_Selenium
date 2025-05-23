@@ -28,6 +28,7 @@ public class BirthDayGifts_Page extends BasePage{
         return !birthDayGiftsList.isEmpty() && birthDayGiftsList.stream().allMatch(WebElement::isDisplayed) ;
     }
     @Step
+    @Description("Select gift from list :  {giftForSearch}")
     public BirthDayGifts_Page selectGift(String giftForSearch){
         List<WebElement> birthDayGiftsList=getBirthDayGiftsList();
         for (WebElement element:birthDayGiftsList){

@@ -53,6 +53,7 @@ public class HomePage extends BasePage {
     }
 
     @Step
+    @Description("Navigate to my  account details page")
     public HomePage navigateToMyAccountDetailsPage(){
          hoverToElement(myAccount_DropDown);
          click(myAccount_Details);
@@ -78,6 +79,7 @@ public class HomePage extends BasePage {
     }
 
     @Step
+    @Description("Select  amounts range  in amounts dropdown")
     public HomePage selectAmount(String amount){
         List<WebElement> dropDownList_AmountsValues_Elems=driver.findElements(dropDownList_Values);
         for (WebElement elem: dropDownList_AmountsValues_Elems){
@@ -90,6 +92,7 @@ public class HomePage extends BasePage {
     }
 
     @Step
+    @Description("Select  region   in regions dropdown")
     public HomePage selectRegion(String region){
         List<WebElement> dropDownList_AmountsValues_Elems=driver.findElements(dropDownList_Values);
         for (WebElement elem: dropDownList_AmountsValues_Elems){
@@ -102,6 +105,7 @@ public class HomePage extends BasePage {
     }
 
     @Step
+    @Description("Select  category   in categories dropdown")
     public HomePage selectCategory(String category){
         List<WebElement> dropDownList_AmountsValues_Elems=driver.findElements(dropDownList_Values);
         for (WebElement elem: dropDownList_AmountsValues_Elems){
@@ -120,12 +124,14 @@ public class HomePage extends BasePage {
     }
 
     @Step
+    @Description("Click on birth day gifts link")
     public HomePage click_BirthDayGifts_Link(){
         click(birthDayGifts_Link);
         return this;
     }
 
     @Step
+    @Description("If pop up appears close it ")
     public HomePage clickClosePopup(){
         try {
             List<WebElement> popupsClose=driver.findElements(closePopUp_Button);
@@ -139,6 +145,7 @@ public class HomePage extends BasePage {
     }
 
     @Step
+    @Description("Navigate to gifts for employees page ")
     public  HomePage navigateToGiftsForEmployees(){
         click(giftsForEmployees_Button);
         List<String> tabs = new ArrayList<>(driver.getWindowHandles());

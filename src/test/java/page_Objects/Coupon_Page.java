@@ -1,5 +1,6 @@
 package page_Objects;
 
+import io.qameta.allure.Description;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -28,6 +29,7 @@ public class Coupon_Page extends BasePage {
     }
 
     @Step
+    @Description("Send keys  :  {couponAmount}")
     public Coupon_Page sendKeysAmount(String couponAmount)  {
         sendKeys(amount_Field,couponAmount);
         return this;
