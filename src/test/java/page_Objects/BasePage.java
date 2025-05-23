@@ -192,7 +192,7 @@ public class BasePage {
 
     @Step
     public boolean areDropdownValuesMatchExpected(List<String> expectedValues,By actualValues) {
-        List<WebElement> actualAmountsList = driver.findElements(actualValues);
+        List<WebElement> actualAmountsList = getElementsFromListLocation(actualValues);
         if (actualAmountsList.size() != expectedValues.size()) {
             Allure.step("Expected list size = " + expectedValues.size());
             Allure.step("Actual list size= " +actualAmountsList.size());

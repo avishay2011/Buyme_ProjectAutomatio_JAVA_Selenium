@@ -1,6 +1,7 @@
 package page_Objects;
 
 import io.qameta.allure.Allure;
+import io.qameta.allure.Description;
 import io.qameta.allure.Step;
 import io.qameta.allure.model.Status;
 import org.openqa.selenium.By;
@@ -87,7 +88,7 @@ public class Purchase_GiftCard_Step1_Page extends BasePage{
     }
 
 
-    @Step
+    @Step@Description("Verify that all expected elements in page displayed") /// The expected elements and their names have taken from another class
     public boolean areAllExpectedElementsDisplayed(){  ///Map include string that contains name and that contains location
         Map<String, By> elementsMap = DropDownValues_And_ElementsMap.getElementsMap(); //If element (found by location) not displayed return false , fail the method and report allure with the element name
         boolean areAllElementsDisplayed = true;

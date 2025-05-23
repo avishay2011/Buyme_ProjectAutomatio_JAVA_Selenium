@@ -3,6 +3,7 @@ package page_Objects;
 
 
 
+import io.qameta.allure.Description;
 import io.qameta.allure.Step;
 import org.openqa.selenium.*;
 import utils.DropDownValues_And_ElementsMap;
@@ -177,15 +178,18 @@ public class HomePage extends BasePage {
 
 
     @Step
+    @Description("Verify that the amount range  inside the dropdown list are correct") ///The helper method for checking this boolean is in base page and the expected have taken from another class
     public boolean areAllAmountsDropdownValuesMatchExpected(){
         return areDropdownValuesMatchExpected(DropDownValues_And_ElementsMap.getExpectedAmounts(),dropDownList_Values);
     }
 
+    @Description("Verify that all country Regiongs  inside the dropdown list are correct") ///The helper method for checking this boolean is in base page and the expected have taken from another class
     @Step
     public boolean areAllRegionsDropdownValuesMatchExpected(){
         return areDropdownValuesMatchExpected(DropDownValues_And_ElementsMap.getExpectedRegions(),dropDownList_Values);
     }
 
+    @Description("Verify that all  Categories  inside the dropdown list are correct") ///The helper method for checking this boolean is in base page and the expected have taken from another class
     @Step
     public boolean areAllCategoriesDropdownValuesMatchExpected(){
         return areDropdownValuesMatchExpected(DropDownValues_And_ElementsMap.getExpectedCategories(),dropDownList_Values);

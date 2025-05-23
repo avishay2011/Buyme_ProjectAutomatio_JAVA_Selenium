@@ -1,5 +1,6 @@
 package page_Objects;
 
+import io.qameta.allure.Description;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -21,6 +22,7 @@ public class BirthDayGifts_Page extends BasePage{
     }
 
     @Step
+    @Description("Verify that the list of birthday gifts is visible and all elements are displayed")
     public boolean isBirthDayGiftsDisplayed(){
         List<WebElement> birthDayGiftsList=getBirthDayGiftsList();
         return !birthDayGiftsList.isEmpty() && birthDayGiftsList.stream().allMatch(WebElement::isDisplayed) ;
