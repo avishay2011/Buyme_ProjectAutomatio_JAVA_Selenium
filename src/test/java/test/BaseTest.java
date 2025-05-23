@@ -110,8 +110,7 @@ public class BaseTest {
     public void switchToTab(String handle) {
         driver.switchTo().window(handle);
     }
-
-
+    gi
     public void closeCurrentTabAndSwitchTo(String handle) {
         driver.close();
         switchToTab(handle);
