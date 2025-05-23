@@ -121,7 +121,7 @@ public class Registration_Page extends BasePage {
     }
 
     @Step
-    @Description("Select country code  - {countryCode} ")
+    @Description("Select country code   ")
     public Registration_Page select_CountryCode(String countryCode){
         click(countriesCodes_Button);
         int count=0;

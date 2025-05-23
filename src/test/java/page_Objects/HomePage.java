@@ -34,6 +34,7 @@ public class HomePage extends BasePage {
     private By birthDayGifts_Link=By.cssSelector("a[title=\"מתנות ליום הולדת\"]");
     private By checkGiftCardBalance_Button=By.xpath("//a[text()='בדיקת יתרה בGift Card']");
     private By giftsForEmployees_Button=By.partialLinkText("מתנות לעובדים");
+    private By closePopUpButton2=By.cssSelector("button[aria-label=\"כפתור סגירה\"]");
 
 
 
@@ -133,6 +134,20 @@ public class HomePage extends BasePage {
     public HomePage clickClosePopup(){
         try {
             List<WebElement> popupsClose=driver.findElements(closePopUp_Button);
+            if(!popupsClose.isEmpty() && popupsClose.get(0).isDisplayed()){
+                popupsClose.get(0).click();
+            }
+        }
+        catch (Exception error){
+        }
+        return this;
+    }
+
+    @Step
+    @Description("If pop up appears close it ")
+    public HomePage clickClosePopup2(){
+        try {
+            List<WebElement> popupsClose=driver.findElements(closePopUpButton2);
             if(!popupsClose.isEmpty() && popupsClose.get(0).isDisplayed()){
                 popupsClose.get(0).click();
             }

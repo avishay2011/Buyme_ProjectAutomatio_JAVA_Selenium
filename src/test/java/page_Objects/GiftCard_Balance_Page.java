@@ -54,7 +54,7 @@ public class GiftCard_Balance_Page extends BasePage{
     }
 
     @Step
-    @Description("Select a date  by day,month,year :  {day} , {month} , {year}")
+    @Description("Select a date  by day,month,year ")
     public GiftCard_Balance_Page select_Date_Picker(String day,String month,String year) throws InterruptedException {
         select_Month_DatePicker(month);
         select_Year_DatePicker(year);

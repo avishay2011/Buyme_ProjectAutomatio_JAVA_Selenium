@@ -57,7 +57,7 @@ public class Purchase_GiftCard_Step1_Page extends BasePage{
     }
 
     @Step
-    @Description("Select celebration reason from list -  {celebrationReason} ")
+    @Description("Select celebration reason from list ")
     public Purchase_GiftCard_Step1_Page select_CelebrationReason(String celebrationReason){
         click(whatAreWeCelebrating_Dropdown_Button);
         List<WebElement> celebrationReasons_List=getElementsFromListLocation(celebrationsReasons_List);

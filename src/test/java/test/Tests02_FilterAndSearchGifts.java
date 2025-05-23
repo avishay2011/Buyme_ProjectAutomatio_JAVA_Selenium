@@ -35,6 +35,7 @@ public class Tests02_FilterAndSearchGifts extends BaseTest {
         Verifications.verifyTrue(homePage.areAllCategoriesDropdownValuesMatchExpected(),"Verify that all the category values on dropdown are as expected ");
         homePage.selectCategory(readFromThisFile("category"));
         homePage.clickFindMeGift();
+        homePage.clickClosePopup2();
     }
 
     @Test
