@@ -117,7 +117,7 @@ public class BaseTest {
         switchToTab(handle);
     }
 
-    @AfterClass
+  //  @AfterClass
     public static void quit() {
         if (driver != null) {
             driver.quit();
