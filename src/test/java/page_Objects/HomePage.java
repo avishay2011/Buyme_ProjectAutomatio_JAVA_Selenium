@@ -53,7 +53,6 @@ public class HomePage extends BasePage {
     }
 
     @Step
-    @Description("Navigate to my  account details page")
     public HomePage navigateToMyAccountDetailsPage(){
          hoverToElement(myAccount_DropDown);
          click(myAccount_Details);
@@ -124,7 +123,6 @@ public class HomePage extends BasePage {
     }
 
     @Step
-    @Description("Click on birth day gifts link")
     public HomePage click_BirthDayGifts_Link(){
         click(birthDayGifts_Link);
         return this;
@@ -145,7 +143,6 @@ public class HomePage extends BasePage {
     }
 
     @Step
-    @Description("Navigate to gifts for employees page ")
     public  HomePage navigateToGiftsForEmployees(){
         click(giftsForEmployees_Button);
         List<String> tabs = new ArrayList<>(driver.getWindowHandles());

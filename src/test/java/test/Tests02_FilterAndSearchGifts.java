@@ -1,6 +1,7 @@
 package test;
 
 import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import org.testng.Assert;
@@ -15,6 +16,7 @@ import java.io.IOException;
 import static utils.Utilities.readFromThisFile;
 
 @Listeners(utils.Listeners.class)
+@Epic("02")
 public class Tests02_FilterAndSearchGifts extends BaseTest {
 
     @BeforeMethod

@@ -36,7 +36,6 @@ public class GiftCard_Balance_Page extends BasePage{
      // =============================================
 
     @Step
-    @Description("Send keys - Coupon code :  {couponCode}")
     public GiftCard_Balance_Page sendKeys_CouponField(String couponCode)  {
         sendKeys(giftCard_Code_Field,couponCode);
         return this;

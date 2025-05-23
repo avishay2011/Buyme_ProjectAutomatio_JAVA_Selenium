@@ -1,6 +1,7 @@
 package test;
 
 import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import org.testng.Assert;
@@ -14,7 +15,9 @@ import java.io.IOException;
 import static utils.Utilities.generateRandomString;
 import static utils.Utilities.readFromThisFile;
 
+
 @Listeners(utils.Listeners.class)
+@Epic("01")  /// added the @Epic annotation just for Allure reporting, because I want the tests to appear in the same order they run.
 public class
 
 Tests01_Registration_And_Login extends BaseTest {

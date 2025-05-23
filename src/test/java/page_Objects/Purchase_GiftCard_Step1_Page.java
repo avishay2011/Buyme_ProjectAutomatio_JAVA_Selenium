@@ -39,21 +39,18 @@ public class Purchase_GiftCard_Step1_Page extends BasePage{
     // =============================================
 
     @Step
-    @Description("Send key - gift card reciever name    {recieverName} ")
     public Purchase_GiftCard_Step1_Page sendKey_GiftReciever_Name(String recieverName){
         sendKeys(giftReciever_Name,recieverName);
         return this;
     }
 
     @Step
-    @Description("Send key - blessing {blessing} ")
     public Purchase_GiftCard_Step1_Page sendKey_Blessing(String blessing){
         sendKeys(blessingFreeText_Field,blessing);
         return this;
     }
 
     @Step
-    @Description("Send keys - file path {picPath} ")
     public Purchase_GiftCard_Step1_Page sendKeys_addPicOrVideo(String picPath){
         sendKeys(addPicOrVideo_Button,picPath);
         return this;
@@ -92,7 +89,8 @@ public class Purchase_GiftCard_Step1_Page extends BasePage{
     }
 
 
-    @Step@Description("Verify that all expected elements in page displayed ") /// The expected elements and their names have taken from another class
+    @Step
+    @Description("Verify that all expected elements in page displayed ") /// The expected elements and their names have taken from another class
     public boolean areAllExpectedElementsDisplayed(){  ///Map include string that contains name and that contains location
         Map<String, By> elementsMap = DropDownValues_And_ElementsMap.getElementsMap(); //If element (found by location) not displayed return false , fail the method and report allure with the element name
         boolean areAllElementsDisplayed = true;

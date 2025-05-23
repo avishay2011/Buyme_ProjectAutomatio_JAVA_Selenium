@@ -63,7 +63,6 @@ public class Registration_Page extends BasePage {
 
 
     @Step
-    @Description("Send keys -email -  {email} ")
     public Registration_Page sendKeys_Email_Field(String email){
         sendKeys(email_Field,email);
         return this;
@@ -110,14 +109,12 @@ public class Registration_Page extends BasePage {
 
 
     @Step
-    @Description("Send keys full name {firstName} , {lastName} ")
     public Registration_Page sendKeys_FullName(String firstName,String lastName) throws ParserConfigurationException, IOException, SAXException {
         sendKeys(name_Field,firstName+" "+lastName);
         return this;
     }
 
     @Step
-    @Description("Send keys cell phone - {cellPhone} ")
     public Registration_Page sendKeys_CellPhoneNumber(String cellPhone){
         sendKeys(cellPhoneNum_Field,cellPhone );
         return this;
