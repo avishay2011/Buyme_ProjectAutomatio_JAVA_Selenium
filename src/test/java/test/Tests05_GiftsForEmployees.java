@@ -15,6 +15,7 @@ import java.io.IOException;
 import static utils.Utilities.readFromThisFile;
 
 @Listeners(utils.Listeners.class)
+@Epic("05")
 public class Tests05_GiftsForEmployees extends BaseTest{
 
     @BeforeMethod

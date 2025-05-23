@@ -1,35 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Suite" verbose="1" parallel="false">
-
-  <test name="01 - Registration and Login">
+<suite name="Suite">
+  <test thread-count="5" name="Test">
     <classes>
+      <class name="test.BaseTest"/>
       <class name="test.Tests01_Registration_And_Login"/>
-    </classes>
-  </test>
-
-  <test name="02 - Filter and Search Gifts">
-    <classes>
       <class name="test.Tests02_FilterAndSearchGifts"/>
-    </classes>
-  </test>
-
-  <test name="03 - Select Gift">
-    <classes>
       <class name="test.Tests03_SelectGift"/>
-    </classes>
-  </test>
-
-  <test name="04 - Check Gift Card Balance">
-    <classes>
       <class name="test.Tests04_Check_Gift_Card_Balance"/>
-    </classes>
-  </test>
-
-  <test name="05 - Gifts For Employees">
-    <classes>
       <class name="test.Tests05_GiftsForEmployees"/>
-    </classes>
-  </test>
-
-</suite>
+    </classes >
+  </test> <!-- Test -->
+</suite> <!-- Suite -->
