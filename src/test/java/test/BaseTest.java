@@ -99,7 +99,9 @@ public class BaseTest {
 
     public WebDriver initChromeDriver() {
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--disable-popup-blocking");
+        options.addArguments("--disable-popup-blocking"); // Block popups
+        options.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});
+        options.setExperimentalOption("useAutomationExtension", false);
         return new ChromeDriver(options);
     }
 
