@@ -29,11 +29,11 @@ public class Listeners extends BaseTest implements ITestListener  {
 
 	public void onTestSuccess (ITestResult test) {
 		System.out.println("----------Test: " + test.getName() + " passed:-----------------");
-		takeScreenShot(driver);
+		takeScreenShot(getDriver());
 	}
 	public void onTestFailure (ITestResult test){
 		System.out.println("----------Test: " + test.getName() + " failed:-----------------");
-		takeScreenShot(driver);
+		takeScreenShot(getDriver());
 	}
 
 

@@ -26,7 +26,7 @@ public class Verifications extends BaseTest {
         Allure.step("Actual :"   +actual);                                             /// The report contain actual value
         if(actual.equalsIgnoreCase("Web element not found")){
             Allure.step("❌ Cannot verify text : element not found ",Status.FAILED);  ///Information for allure report
-            takeScreenShot(driver);                                                         ///Add screenshot
+            takeScreenShot(getDriver());                                                         ///Add screenshot
             softAssert.fail("Element not found – cannot verify text ");                     ///Collected to the steps that faild
             Allure.getLifecycle().updateStep(step -> step.setStatus(Status.FAILED));        /// Sign the step as failed manually for report
             return;  // If element not found stop the test
@@ -36,13 +36,13 @@ public class Verifications extends BaseTest {
             Allure.step("❌ Mismatch detected" , Status.FAILED);
             Allure.step("Actual " + actual);
             Allure.step("Actual " + expected);
-            takeScreenShot(driver);
+            takeScreenShot(getDriver());
             softAssert.fail("Values did not match");
             Allure.getLifecycle().updateStep(step -> step.setStatus(Status.FAILED));
         }
         else {
             Allure.step("✅ ");
-            takeScreenShot(driver);
+            takeScreenShot(getDriver());
         }
     }
 
@@ -53,7 +53,7 @@ public class Verifications extends BaseTest {
         Allure.step("Actual :"   +actualColor);                                             /// The report contain actual value
         if(actualColor.equalsIgnoreCase("Web element not found")){
             Allure.step("❌ Cannot verify color : element not found ",Status.FAILED);  ///Information for allure report
-            takeScreenShot(driver);                                                         ///Add screenshot
+            takeScreenShot(getDriver());                                                         ///Add screenshot
             softAssert.fail("Element not found – cannot verify color ");                     ///Collected to the steps that faild
             Allure.getLifecycle().updateStep(step -> step.setStatus(Status.FAILED));        /// Sign the step as failed manually for report
             return;  // If element not found stop the test
@@ -61,13 +61,13 @@ public class Verifications extends BaseTest {
         softAssert.assertEquals(actualColor.trim(), expectedColor.trim(), "Colors mismatch"); /// If have text to compare with the expected text
         if (!actualColor.trim().equals(expectedColor.trim())) {
             Allure.step("❌ Colors mismatch detected", Status.FAILED);
-            takeScreenShot(driver);
+            takeScreenShot(getDriver());
             softAssert.fail("Color rgb values did not match");
             Allure.getLifecycle().updateStep(step -> step.setStatus(Status.FAILED));
         }
         else {
             Allure.step("✅ ");
-            takeScreenShot(driver);
+            takeScreenShot(getDriver());
         }
     }
 
@@ -77,18 +77,18 @@ public class Verifications extends BaseTest {
         Allure.step("Actual   : " + condition);
         if (!condition) {
             Allure.step("❌  "+description + "-Condition failed", Status.FAILED);
-            takeScreenShot(driver);
+            takeScreenShot(getDriver());
             softAssert.fail("❌  " +description + "-Condition failed");
             Allure.getLifecycle().updateStep(s -> s.setStatus(Status.FAILED));
         } else {
             Allure.step("✅ Condition met "+description);
-            takeScreenShot(driver);
+            takeScreenShot(getDriver());
         }
     }
 
     @Step("Assert all soft assertions")
     public static void assertAll() {
         softAssert.assertAll();
-        takeScreenShot(driver);
+        takeScreenShot(getDriver());
     }
 }

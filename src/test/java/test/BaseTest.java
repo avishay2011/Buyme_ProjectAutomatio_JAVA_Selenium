@@ -29,7 +29,8 @@ import static utils.Utilities.readFromThisFile;
 @Listeners({AllureTestNg.class})
 public class BaseTest {
 
-    protected static WebDriver driver;
+    // protected static WebDriver driver;
+    protected static ThreadLocal<WebDriver> driverThreadLocal = new ThreadLocal<>();
     protected static Actions actions;
     protected static WebDriverWait wait;
     protected SoftAssert softAssert;
@@ -50,76 +51,86 @@ public class BaseTest {
     public  void setUp() throws ParserConfigurationException, IOException, SAXException {
         // DEFINE  DRIVER
         initBrowser(readFromThisFile("browser"));
-        actions = new Actions(driver);
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.manage().window().maximize();
+        actions = new Actions(getDriver());
+        wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
+        getDriver().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        getDriver().manage().window().maximize();
     }
 
     @BeforeMethod
     public void uploadSite() throws ParserConfigurationException, IOException, SAXException {
         softAssert = new SoftAssert(); ///Important Reinitialize SoftAssert in @BeforeMethod so that each test starts with clean softassertions data
-        homePage = new HomePage(driver);
-        registration_Page=new Registration_Page(driver);
-        mailiNator_Page_NewTab=new MailiNator_Page_NewTab(driver);
-        myAccountDetails_page=new MyAccountDetails_Page(driver);
-        searchResults_page=new SearchResults_Page(driver);
-        birthDayGiftsPage=new BirthDayGifts_Page(driver);
-        couponPage=new Coupon_Page(driver);
-        purchaseGiftCard_Step1_Page=new Purchase_GiftCard_Step1_Page(driver);
-        purchaseGiftCard_Step2_Page=new Purchase_GiftCard_Step2_Page(driver);
-        giftCard_balance_page=new GiftCard_Balance_Page(driver);
-        giftsForEmployees_page=new GiftsForEmployees_Page(driver);
-        driver.get(readFromThisFile("url"));
+        homePage = new HomePage(getDriver());
+        registration_Page=new Registration_Page(getDriver());
+        mailiNator_Page_NewTab=new MailiNator_Page_NewTab(getDriver());
+        myAccountDetails_page=new MyAccountDetails_Page(getDriver());
+        searchResults_page=new SearchResults_Page(getDriver());
+        birthDayGiftsPage=new BirthDayGifts_Page(getDriver());
+        couponPage=new Coupon_Page(getDriver());
+        purchaseGiftCard_Step1_Page=new Purchase_GiftCard_Step1_Page(getDriver());
+        purchaseGiftCard_Step2_Page=new Purchase_GiftCard_Step2_Page(getDriver());
+        giftCard_balance_page=new GiftCard_Balance_Page(getDriver());
+        giftsForEmployees_page=new GiftsForEmployees_Page(getDriver());
+        getDriver().get(readFromThisFile("url"));
+    }
+
+    public static WebDriver getDriver() {  ///This method is good if I want to run the tests by parallel with more than one driver opens on the same time
+        return driverThreadLocal.get();   /// Return the driver of the current run instead return simply driver. good if I want to run the tests parallel
+    }
+
+    public static void setDriver(WebDriver driver) { ///initializeddrive ThreadLocal and set by driver
+        driverThreadLocal.set(driver);
     }
 
 
 
-    public void initBrowser(String BrowserName) {
-        if (BrowserName.equalsIgnoreCase("chrome"))
+    public void initBrowser(String browserName) {  ///Select driver and initialize it .than initialize driverThreadLocal with the driver that selected
+        WebDriver driver;
+        if (browserName.equalsIgnoreCase("chrome"))
             driver = initChromeDriver();
-        else if (BrowserName.equalsIgnoreCase("edge"))
+        else if (browserName.equalsIgnoreCase("edge"))
             driver = initEdgeDriver();
-        else if (BrowserName.equalsIgnoreCase("firefox"))
+        else if (browserName.equalsIgnoreCase("firefox"))
             driver = initFireFoxDriver();
         else
-            throw new RuntimeException("Invalid browser type- Please select Chrome ,firefox or  edge driver  only");
+            throw new RuntimeException("Invalid browser type");
+        setDriver(driver);  ///The driverThreadLocal is initialized with the driver that selelcted
     }
 
     public WebDriver initChromeDriver() {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--disable-popup-blocking");
-        driver = new ChromeDriver(options);
-        return driver;
+        return new ChromeDriver(options);
     }
 
     public WebDriver initEdgeDriver() {
-        driver = new EdgeDriver();
-        return driver;
+        return  new EdgeDriver();
     }
 
     public WebDriver initFireFoxDriver() {
-        driver = new FirefoxDriver();
-        return driver;
+        return  new FirefoxDriver();
     }
 
     public String getCurrentTabHandle() {
-        return driver.getWindowHandle();
+        return getDriver().getWindowHandle();
     }
 
     public void switchToTab(String handle) {
-        driver.switchTo().window(handle);
+        getDriver().switchTo().window(handle);
     }
 
     public void closeCurrentTabAndSwitchTo(String handle) {
-        driver.close();
+        getDriver().close();
         switchToTab(handle);
     }
 
+
     @AfterClass
-    public static void quit() {
-        if (driver != null) {
-            driver.quit();
+    public  void quit() {
+        if (getDriver() != null) {
+            getDriver().quit();
+            driverThreadLocal.remove();
         }
     }
+
 }

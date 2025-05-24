@@ -31,7 +31,7 @@ public class Tests05_GiftsForEmployees extends BaseTest{
           homePage.navigateToGiftsForEmployees();
           giftsForEmployees_page.clickJoinNowButton();
           Verifications.verifyTrue(giftsForEmployees_page.isEmployeesAmountFieldISDisplayed(),"Verify Elmployees amount field visibilty");
-          Verifications.verifyTrue(driver.getCurrentUrl().contains(readFromThisFile("giftsForEmployeesPageUrl")),"Verify Gifts for employees page opens");
+          Verifications.verifyTrue(getDriver().getCurrentUrl().contains(readFromThisFile("giftsForEmployeesPageUrl")),"Verify Gifts for employees page opens");
           Verifications.assertAll();
     }
 }

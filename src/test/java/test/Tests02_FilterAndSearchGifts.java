@@ -56,7 +56,7 @@ public class Tests02_FilterAndSearchGifts extends BaseTest {
         Verifications.verifyTrue(searchResults_page.getTextSearchResults().contains(readFromThisFile("amount")),  "Has the amount value for search included in results"); ///Check that the correct amount appears on results
         Verifications.verifyTrue(searchResults_page.getTextSearchResults().contains(readFromThisFile("region")),  "Has the region value for search included in results");///Check that the correct region appears on results
         Verifications.verifyTrue(searchResults_page.getTextSearchResults().contains(readFromThisFile("category")),"Has the region category value for search included in results");///Check that the correct category appears on results
-        driver.navigate().back();
+        getDriver().navigate().back();
         homePage.clearSearch();
         Verifications.verifyTrue(homePage.isAmountFieldIsClear(),  "Amounts dropdown field  has clear");
         Verifications.verifyTrue(homePage.isRegionFieldIsClear(),  "Regions dropdown field  has clear");
