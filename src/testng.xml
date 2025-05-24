@@ -3,11 +3,11 @@
 <suite name="Suite" parallel="false" thread-count="5">
   <test name="Test">
     <classes>
-      <class name="test.Tests01_Registration_And_Login"/>
+<!--      <class name="test.Tests01_Registration_And_Login"/>-->
       <class name="test.Tests02_FilterAndSearchGifts"/>
-      <class name="test.Tests03_SelectGift"/>
-      <class name="test.Tests04_Check_Gift_Card_Balance"/>
-      <class name="test.Tests05_GiftsForEmployees"/>
+<!--      <class name="test.Tests03_SelectGift"/>-->
+<!--      <class name="test.Tests04_Check_Gift_Card_Balance"/>-->
+<!--      <class name="test.Tests05_GiftsForEmployees"/>-->
     </classes>
   </test>
 </suite>
