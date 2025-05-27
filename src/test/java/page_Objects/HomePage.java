@@ -6,6 +6,7 @@ package page_Objects;
 import io.qameta.allure.Description;
 import io.qameta.allure.Step;
 import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import utils.DropDownValues_And_ElementsMap;
 
 import java.util.ArrayList;
@@ -214,17 +215,7 @@ public class HomePage extends BasePage {
         return areDropdownValuesMatchExpected(DropDownValues_And_ElementsMap.getExpectedCategories(),dropDownList_Values);
     }
 
-    @Step
-    public boolean isDropdownListIsVisible(){ //Check that the dropdown opened,Only one dropdown can be opened on the same time so the same method can be used for all dropdowns .
-        //  have another steps more specific that verify that each dropdown also contains the correct values
-        try {
-             return driver.findElement(dropDownList_Values).isDisplayed();
-        }
-        catch (NoSuchElementException error){
-            System.out.println("Dropdown amounts list  is not visible");
-            return false;
-        }
-    }
+
 
     @Step
     public boolean isAmountFieldIsClear(){

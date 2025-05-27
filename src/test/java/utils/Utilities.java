@@ -1,12 +1,15 @@
 package utils;
 
 import io.qameta.allure.Allure;
+import io.qameta.allure.Attachment;
+import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.logging.LogType;
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
-
+import org.openqa.selenium.logging.LogEntry;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -18,7 +21,9 @@ import java.nio.file.StandardCopyOption;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Random;
+import java.util.stream.Collectors;
 
+///My utilities include takeScreenShot,generateRandomString,readFromThisFile,attachConsoleLogs(for allure report)
 
 public class Utilities {
     static final String configPath = "src/testData/config.xml";
@@ -79,4 +84,5 @@ public class Utilities {
     public static String readFromThisFile(String keyData) throws ParserConfigurationException, IOException, SAXException {
         return readFromFile(keyData, configPath);
     }
+
 }

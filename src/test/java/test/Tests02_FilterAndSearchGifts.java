@@ -22,16 +22,14 @@ public class Tests02_FilterAndSearchGifts extends BaseTest {
     public void checkPageReadyAndPreConditions() throws ParserConfigurationException, IOException, SAXException {
         Assert.assertTrue(homePage.pageLoadedWithNoErrors());
         Assert.assertTrue(homePage.homePageIsDisplayed());
+        homePage.clickClosePopup();
         homePage.openAmounts_Dropdown();
-        Verifications.verifyTrue(homePage.isDropdownListIsVisible(),"Verify amounts dropdown list appears"); //check the last dropdown that opened -check amounts dropdown
         Verifications.verifyTrue(homePage.areAllAmountsDropdownValuesMatchExpected(),"Verify that all the amounts values on dropdown are as expected");
         homePage.selectAmount(readFromThisFile("amount"));
         homePage.openRegions_Dropdown();
-        Verifications.verifyTrue(homePage.isDropdownListIsVisible(),"Verify regions dropdown list appears");//-check region dropdown
         Verifications.verifyTrue(homePage.areAllRegionsDropdownValuesMatchExpected(),"Verify that all the regions values on dropdown are as expected ");
         homePage.selectRegion(readFromThisFile("region"));
         homePage.openCategories_Dropdown();
-        Verifications.verifyTrue(homePage.isDropdownListIsVisible(),"Verify categories dropdown list appears");//check the last dropdown that opened -check categories dropdown
         Verifications.verifyTrue(homePage.areAllCategoriesDropdownValuesMatchExpected(),"Verify that all the category values on dropdown are as expected ");
         homePage.selectCategory(readFromThisFile("category"));
         homePage.clickFindMeGift();

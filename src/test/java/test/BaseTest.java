@@ -49,8 +49,7 @@ public class BaseTest {
 
     @BeforeClass
     public  void setUp() throws ParserConfigurationException, IOException, SAXException {
-        // DEFINE  DRIVER
-        initBrowser(readFromThisFile("browser"));
+        initBrowser(readFromThisFile("browser")); ///Initilize driver
         actions = new Actions(getDriver());
         wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
         getDriver().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
