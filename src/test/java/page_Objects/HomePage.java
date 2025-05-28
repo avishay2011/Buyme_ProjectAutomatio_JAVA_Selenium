@@ -6,7 +6,6 @@ package page_Objects;
 import io.qameta.allure.Description;
 import io.qameta.allure.Step;
 import org.openqa.selenium.*;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import utils.DropDownValues_And_ElementsMap;
 
 import java.util.ArrayList;
@@ -41,7 +40,7 @@ public class HomePage extends BasePage {
 
     // =============== Actions =====================
     // =============================================
-    @Step
+    @Step("Click - \"Login\" - button")
     public HomePage navigateToRegistrationPage(){
         click(login_Button);
         return this;
@@ -54,33 +53,32 @@ public class HomePage extends BasePage {
             return isElementDisplayed(searchButton);
     }
 
-    @Step
+    @Step("Navigate to \" my account details \" - page")
     public HomePage navigateToMyAccountDetailsPage(){
          hoverToElement(myAccount_DropDown);
          click(myAccount_Details);
          return this;
         }
 
-    @Step
+    @Step("Open dropdown - amounts")
     public HomePage openAmounts_Dropdown(){
         click(amounts_Dropdown_Button);
         return this;
     }
 
-    @Step
+    @Step("Open dropdown - regions")
     public HomePage openRegions_Dropdown(){
         click(regions_Dropdown_Button);
         return this;
     }
 
-    @Step
+    @Step("Open dropdown - categories")
     public HomePage openCategories_Dropdown(){
         click(categories_Dropdown_Button);
         return this;
     }
 
-    @Step
-    @Description("Select  amounts range  in amounts dropdown")
+    @Step("Select  amounts range  by dropdown ")
     public HomePage selectAmount(String amount){
         List<WebElement> dropDownList_AmountsValues_Elems=driver.findElements(dropDownList_Values);
         for (WebElement elem: dropDownList_AmountsValues_Elems){
@@ -92,8 +90,7 @@ public class HomePage extends BasePage {
         return this;
     }
 
-    @Step
-    @Description("Select  region   in regions dropdown")
+    @Step("Select  region  by dropdown ")
     public HomePage selectRegion(String region){
         List<WebElement> dropDownList_AmountsValues_Elems=driver.findElements(dropDownList_Values);
         for (WebElement elem: dropDownList_AmountsValues_Elems){
@@ -105,8 +102,7 @@ public class HomePage extends BasePage {
         return this;
     }
 
-    @Step
-    @Description("Select  category   in categories dropdown")
+    @Step("Select  category  by  dropdown")
     public HomePage selectCategory(String category){
         List<WebElement> dropDownList_AmountsValues_Elems=driver.findElements(dropDownList_Values);
         for (WebElement elem: dropDownList_AmountsValues_Elems){
@@ -118,20 +114,19 @@ public class HomePage extends BasePage {
         return this;
     }
 
-    @Step
+    @Step("Click - find gift - button")
     public HomePage clickFindMeGift(){
         click(findGift_Button);
         return this;
     }
 
-    @Step
+    @Step("Click on link -birth day gifts")
     public HomePage click_BirthDayGifts_Link(){
         click(birthDayGifts_Link);
         return this;
     }
 
-    @Step
-    @Description("If pop up appears close it ")
+    @Step("Close popup ") ///close the popup if it's appears
     public HomePage clickClosePopup(){
         try {
             List<WebElement> popupsClose=driver.findElements(closePopUp_Button);
@@ -144,8 +139,7 @@ public class HomePage extends BasePage {
         return this;
     }
 
-    @Step
-    @Description("If pop up appears close it ")
+    @Step("Close popup ")///close the popup if it's appears
     public HomePage clickClosePopup2(){
         try {
             List<WebElement> popupsClose=driver.findElements(closePopUpButton2);
@@ -158,7 +152,7 @@ public class HomePage extends BasePage {
         return this;
     }
 
-    @Step
+    @Step("Navigate to page - Gifts for employees")
     public  HomePage navigateToGiftsForEmployees(){
         click(giftsForEmployees_Button);
         List<String> tabs = new ArrayList<>(driver.getWindowHandles());
@@ -166,19 +160,19 @@ public class HomePage extends BasePage {
         return this;
     }
 
-    @Step
+    @Step("Click \"Clear search\" button")
     public HomePage clearSearch(){
         click(clearSearch_Button);
         return this;
     }
 
-    @Step
+    @Step("Click \"Check card balance\" - button")
     public HomePage clickcheckGiftCardBalanceButton(){
         click(checkGiftCardBalance_Button);
         return this;
     }
 
-    @Step
+    @Step("Click \"Log out\" - button")
     public HomePage logOut(){
         try {
             hoverToElement(myAccount_DropDown);

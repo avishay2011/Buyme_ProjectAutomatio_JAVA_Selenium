@@ -38,25 +38,25 @@ public class Purchase_GiftCard_Step1_Page extends BasePage{
     // =============== Actions =====================
     // =============================================
 
-    @Step
+    @Step("Send keys '{recieverName}' on {giftReciever_Name}")
     public Purchase_GiftCard_Step1_Page sendKey_GiftReciever_Name(String recieverName){
         sendKeys(giftReciever_Name,recieverName);
         return this;
     }
 
-    @Step
+    @Step("Send keys '{blessing}' on {blessingFreeText_Field}")
     public Purchase_GiftCard_Step1_Page sendKey_Blessing(String blessing){
         sendKeys(blessingFreeText_Field,blessing);
         return this;
     }
 
-    @Step
+    @Step("Send keys '{picPath}' on {addPicOrVideo_Button}")
     public Purchase_GiftCard_Step1_Page sendKeys_addPicOrVideo(String picPath){
         sendKeys(addPicOrVideo_Button,picPath);
         return this;
     }
 
-    @Step
+    @Step("Send keys '{picPath}' on {addPicOrVideo_Button}")
     @Description("Select celebration reason from list ")
     public Purchase_GiftCard_Step1_Page select_CelebrationReason(String celebrationReason){
         click(whatAreWeCelebrating_Dropdown_Button);
@@ -68,12 +68,12 @@ public class Purchase_GiftCard_Step1_Page extends BasePage{
             }
         return this;
     }
-    @Step
+    @Step("Click - \"Continue\" ")
     public Purchase_GiftCard_Step1_Page click_Continue(){
         click(continue_Button);
         return this;
     }
-    @Step
+    @Step("Select - gift for myself")
     public Purchase_GiftCard_Step1_Page click_For_Myself(){
         click(forMySelf_Button);
         return this;

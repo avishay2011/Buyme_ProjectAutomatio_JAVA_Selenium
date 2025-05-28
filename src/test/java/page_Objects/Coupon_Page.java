@@ -19,15 +19,15 @@ public class Coupon_Page extends BasePage {
     private By errorMessage_NoAmountEntered = By.cssSelector(".text-field__error-message");
 
 
-    //Functions
+    //Methods
 
-    @Step
+    @Step("Click select button")
     public Coupon_Page clickSelect() {
         click(select_Button);
         return this;
     }
 
-    @Step
+    @Step("Send keys '{couponAmount}' on {amount_Field}")
     public Coupon_Page sendKeysAmount(String couponAmount)  {
         sendKeys(amount_Field,couponAmount);
         return this;

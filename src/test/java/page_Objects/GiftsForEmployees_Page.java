@@ -15,7 +15,7 @@ public class GiftsForEmployees_Page extends BasePage {
     private By employeesAmountField=By.cssSelector("input[name=\"employeesAmount\"]");
 
     //methods
-    @Step
+    @Step("Click - \"join now\" - button")
     public GiftsForEmployees_Page clickJoinNowButton(){
         click(joinNowButton);
         return this;

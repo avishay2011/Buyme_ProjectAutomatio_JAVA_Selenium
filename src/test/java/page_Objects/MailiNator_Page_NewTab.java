@@ -20,38 +20,38 @@ public class MailiNator_Page_NewTab extends BasePage {
 
     //functions
 
-    @Step
+    @Step("Create demo email ")
     public MailiNator_Page_NewTab createDemoEmail(String emailAddress){
         sendKeysSearchEmail(emailAddress);
         clickMailiNatorPageSearchButton();
         return this;
     }
 
-    @Step
+    @Step("Send keys '{emailAddress}' on {searchEmail_Field}")
     public MailiNator_Page_NewTab  sendKeysSearchEmail(String emailAddress){ // It is search email field and also create a new demo email Address
         sendKeys(searchEmail_Field,emailAddress);
         return this;
     }
 
-    @Step
+    @Step("Click search button   ")
     public MailiNator_Page_NewTab  clickMailiNatorPageSearchButton(){
         click(searchEmail_Button);
         return this;
     }
 
-    @Step
+    @Step("Enter first recieved email   ")
     public MailiNator_Page_NewTab  getFirstRecievedEmail(){ // Enter the email and get the password from the email in the next step
         click(firstEmail);
         return this;
     }
 
-    @Step
+    @Step("Enter email that contains password  ")
     public MailiNator_Page_NewTab getEmailContainCode(){
         click(emailWithCode);;
         return this;
     }
 
-    @Step
+    @Step("Get password text  ")
     public String getPasswordText(){
        WebElement emailBody_iframe=driver.findElement(emailBodyIframe);
        driver.switchTo().frame(emailBody_iframe);

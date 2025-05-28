@@ -35,26 +35,25 @@ public class GiftCard_Balance_Page extends BasePage{
      // =============== Actions =====================
      // =============================================
 
-    @Step
+    @Step("Send keys '{couponCode}' on {giftCard_Code_Field})")
     public GiftCard_Balance_Page sendKeys_CouponField(String couponCode)  {
         sendKeys(giftCard_Code_Field,couponCode);
         return this;
     }
 
-    @Step
+    @Step("Open date picker")
     public GiftCard_Balance_Page click_DatePicker_Button(){
         click(datePicker_Button);
         return this;
     }
 
-    @Step
+    @Step("Click check balance button")
     public GiftCard_Balance_Page click_CheckBalance_Button(){
         click(checkBalance_Button);
         return this;
     }
 
-    @Step
-    @Description("Select a date  by day,month,year ")
+    @Step("Select a date  by day,month,year ")
     public GiftCard_Balance_Page select_Date_Picker(String day,String month,String year) throws InterruptedException {
         select_Month_DatePicker(month);
         select_Year_DatePicker(year);

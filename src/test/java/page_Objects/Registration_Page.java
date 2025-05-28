@@ -47,14 +47,14 @@ public class Registration_Page extends BasePage {
     // =============================================
 
 
-    @Step
+    @Step("Select - register by email")
     public Registration_Page select_Register_By_Email(){
         click(login_ByEmail_Button);
         return this;
     }
 
 
-    @Step
+    @Step("Insert Email and click enter")
     public Registration_Page enter_By_Email(String email_Field){
         sendKeys_Email_Field(email_Field);
         click_Enter_After_InsertEmail();
@@ -62,65 +62,64 @@ public class Registration_Page extends BasePage {
     }
 
 
-    @Step
+    @Step("Send keys '{email}' on {email_Field}")
     public Registration_Page sendKeys_Email_Field(String email){
         sendKeys(email_Field,email);
         return this;
     }
 
-    @Step("")
+    @Step("Click enter button ")
     public Registration_Page click_Enter_After_InsertEmail(){
         click(enter_Button);
         return this;
     }
 
 
-    @Step
-    @Description("Navigate to mailinator page - for get a password or create a new user  ")
+    @Step("Navigate to mailinator page - for get a password or create a new user  ")
     public Registration_Page navigateToMailiNator() throws ParserConfigurationException, IOException, SAXException { /// Using the service of mailinator for create demo email address and sent it for verificatin on buyme registration proccess
         driver.switchTo().newWindow(WindowType.TAB);
         driver.get(readFromThisFile("mailiNatorurl"));
         return this;
     }
 
-    @Step
+    @Step("Send keys '{otpCode}' on {otpCode_Field_Location}")
     public Registration_Page send_OtpCode(String otpCode){
         sendKeys(otpCode_Field_Location,otpCode);
         return this;
     }
 
-    @Step
+    @Step("Verify Otp code -click verify SMS ")
     public Registration_Page verify_SMS_OtpCode(){
         click(verifySMS_OtpCode_Button);
         return this;
     }
 
-    @Step
+    @Step("Click Enter ")
     public Registration_Page clickEnter_AfterRegisterProcess(){
         click(verifyEmail_OtpCode_Button);
         return this;
     }
 
-    @Step
+    @Step("Click Enter ")
     public Registration_Page clickEnter_AfterLoginProcess(){
         click(enter_Button_Get_Code);
         return this;
     }
 
 
-    @Step
+    @Step ("Send keys '{firstName}+\" \"+ {lastName}' on {name_Field}")
     public Registration_Page sendKeys_FullName(String firstName,String lastName) throws ParserConfigurationException, IOException, SAXException {
         sendKeys(name_Field,firstName+" "+lastName);
         return this;
     }
 
-    @Step
+    @Step("Send keys '{cellPhone}' on {cellPhoneNum_Field}")
     public Registration_Page sendKeys_CellPhoneNumber(String cellPhone){
         sendKeys(cellPhoneNum_Field,cellPhone );
         return this;
     }
 
-    @Step
+    @Step("Select country code from dropdown list")
     @Description("Select country code   ")
     public Registration_Page select_CountryCode(String countryCode){
         click(countriesCodes_Button);
@@ -136,13 +135,13 @@ public class Registration_Page extends BasePage {
     }
 
 
-    @Step
+    @Step("Click \"I agree\" -radion button")
     public Registration_Page click_IAgree_PrivacyPolicy(){
         click(iAgree_CheckBox);
         return this;
     }
 
-    @Step
+    @Step("Click - \"Register\" - button")
     public Registration_Page click_Register_Button(){
         click(register_button);
         return this;

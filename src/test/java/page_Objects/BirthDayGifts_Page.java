@@ -21,14 +21,13 @@ public class BirthDayGifts_Page extends BasePage{
         return getElementsFromListLocation(birthDay_gifts_List);
     }
 
-    @Step
-    @Description("Verify that the list of birthday gifts is visible and all elements are displayed")
+    //Methods
+    @Step("Verify that the list of birthday gifts is visible and all elements are displayed")
     public boolean isBirthDayGiftsDisplayed(){
         List<WebElement> birthDayGiftsList=getBirthDayGiftsList();
         return !birthDayGiftsList.isEmpty() && birthDayGiftsList.stream().allMatch(WebElement::isDisplayed) ;
     }
-    @Step
-    @Description("Select gift from list")
+    @Step("Select gift from list")
     public BirthDayGifts_Page selectGift(String giftForSearch){
         List<WebElement> birthDayGiftsList=getBirthDayGiftsList();
         for (WebElement element:birthDayGiftsList){
