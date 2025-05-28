@@ -2,10 +2,8 @@ package page_Objects;
 
 import org.openqa.selenium.WebDriver;
 import org.xml.sax.SAXException;
-
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
-
 import static utils.Utilities.readFromThisFile;
 
 public class Purchase_GiftCard_Step2_Page extends BasePage{

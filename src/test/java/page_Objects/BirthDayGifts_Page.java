@@ -1,6 +1,5 @@
 package page_Objects;
 
-import io.qameta.allure.Description;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

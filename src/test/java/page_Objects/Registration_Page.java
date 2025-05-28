@@ -6,11 +6,9 @@ import io.qameta.allure.Description;
 import io.qameta.allure.Step;
 import org.openqa.selenium.*;
 import org.xml.sax.SAXException;
-
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 import java.util.List;
-
 import static utils.Utilities.readFromThisFile;
 
 
