@@ -89,9 +89,9 @@ Tests01_Registration_And_Login extends BaseTest {
                 .click_IAgree_PrivacyPolicy()
                 .click_Register_Button();
         homePage.navigateToMyAccountDetailsPage();
-        Verifications.verifyTextEquals(myAccountDetails_page.getFirstNameInputValue(), readFromThisFile("firstName"), "Text appears on firstName field");
-        Verifications.verifyTextEquals(myAccountDetails_page.getLastNameInputValue(), readFromThisFile("lastName"), "Text appears on firstName field");
-        Verifications.verifyTextEquals(myAccountDetails_page.getCellPhoneInputValue(), readFromThisFile("cellPhoneNumber") + " " + readFromThisFile("countryCode") + "+", "Text appears on cellphone field");
+        Verifications.verifyTextEquals(myAccountDetails_page.getFirstNameInputValue(), readFromThisFile("firstName"), "FirstName input  field text");
+        Verifications.verifyTextEquals(myAccountDetails_page.getLastNameInputValue(), readFromThisFile("lastName"), "Last name input field text");
+        Verifications.verifyTextEquals(myAccountDetails_page.getCellPhoneInputValue(), readFromThisFile("cellPhoneNumber") + " " + readFromThisFile("countryCode") + "+", "Cell phone input field text");
         Verifications.assertAll();
     }
 

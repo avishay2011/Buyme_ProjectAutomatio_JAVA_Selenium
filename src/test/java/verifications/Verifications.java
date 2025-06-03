@@ -21,7 +21,7 @@ public class Verifications extends BaseTest {
     private static SoftAssert softAssert = new SoftAssert();
 
     @Step("Verify text equals : {elementName}")
-    public static void verifyTextEquals(String actual, String expected,String elementName) {  ///Element name clarify in allure report what field or message have checked
+    public static void verifyTextEquals(String actual, String expected,String testDescription) {  ///Element name clarify in allure report what field or message have checked
         Allure.step("Expected :" +expected);                                         /// The report contain expected value
         Allure.step("Actual :"   +actual);                                             /// The report contain actual value
         if(actual.equalsIgnoreCase("Web element not found")){
@@ -72,16 +72,16 @@ public class Verifications extends BaseTest {
     }
 
     @Step("Verifying condition: {description}")
-    public static void verifyTrue(boolean condition,String description) {
+    public static void verifyTrue(boolean condition,String testDescription) {
         Allure.step("Expected : true");
         Allure.step("Actual   : " + condition);
         if (!condition) {
-            Allure.step("❌  "+description + "-Condition failed", Status.FAILED);
+            Allure.step("❌  "+testDescription + "-Condition failed", Status.FAILED);
             takeScreenShot(getDriver());
-            softAssert.fail("❌  " +description + "-Condition failed");
+            softAssert.fail("❌  " +testDescription + "-Condition failed");
             Allure.getLifecycle().updateStep(s -> s.setStatus(Status.FAILED));
         } else {
-            Allure.step("✅ Condition met "+description);
+            Allure.step("✅ Condition met "+testDescription);
             takeScreenShot(getDriver());
         }
     }

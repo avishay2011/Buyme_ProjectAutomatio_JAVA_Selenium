@@ -63,7 +63,7 @@ public class GiftCard_Balance_Page extends BasePage{
 
     @Step
     public GiftCard_Balance_Page select_Day_DatePicker(String day){
-        List<WebElement> daysList=driver.findElements(daysList_DatePicker);
+        List<WebElement> daysList=getElementsFromListLocation(daysList_DatePicker);
         boolean found = false;
         for (WebElement element:daysList){
             if (element.getText().equalsIgnoreCase(day)){
