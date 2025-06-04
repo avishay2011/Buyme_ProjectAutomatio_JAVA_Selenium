@@ -34,33 +34,32 @@ Tests01_Registration_And_Login extends BaseTest {
     @Description("Start the registration process .get to the registration form and verify that the correct error messages appears after insert wrong values")
     public void test01_NotValidRegistration() throws ParserConfigurationException, IOException, SAXException {
         homePage.navigateToRegistrationPage();
-        Assert.assertTrue(registration_Page.registrationPageIsDisplayed());
-        registration_Page.select_Register_By_Email();
+        Assert.assertTrue(registrationPage_Step1_InsertEmail.registrationPageIsDisplayed());
+        registrationPage_Step1_InsertEmail.select_Register_By_Email();
         String registrationTab1_InsertEmail = getCurrentTabHandle();
-        registration_Page.navigateToMailiNator();
+        registrationPage_Step1_InsertEmail.navigateToMailiNator();
         mailiNator_Page_NewTab.createDemoEmail(randomString2);
         String mailinatorTab = getCurrentTabHandle();
         switchToTab(registrationTab1_InsertEmail);
-        registration_Page.enter_By_Email(randomString2 + readFromThisFile("mailiNator_Annotation"));
+        registrationPage_Step1_InsertEmail.enter_By_Email(randomString2 + readFromThisFile("mailiNator_Annotation"));
         String registrationTab2_InsertPassword = getCurrentTabHandle();
         switchToTab(mailinatorTab);
         mailiNator_Page_NewTab.getFirstRecievedEmail();
         String otpCode = mailiNator_Page_NewTab.getPasswordText();
         closeCurrentTabAndSwitchTo(registrationTab2_InsertPassword);
-        registration_Page.send_OtpCode(otpCode) ///Send Otp code ,enter and then fill the form and click on the register button
-                .clickEnter_AfterRegisterProcess()
-                .sendKeys_FullName(readFromThisFile("wrongInputFirstName"), readFromThisFile("wrongInputLastName"))
+        registrationPage_step2_insertCode.send_OtpCode(otpCode) ///Send Otp code ,enter and then fill the form and click on the register button
+                .clickEnter_AfterRegisterProcess();
+        registrationPage_form.sendKeys_FullName(readFromThisFile("wrongInputFirstName"), readFromThisFile("wrongInputLastName"))
                 .select_CountryCode(readFromThisFile("countryCode"))
                 .sendKeys_CellPhoneNumber(readFromThisFile("wrongInputCellPhoneNumber"))
                 .click_Register_Button();
-        Verifications.verifyTextEquals(registration_Page.getTextWrongNameErrorMessage(), readFromThisFile("errorMessageWrongName"), "Not valid name-error message");
-        Verifications.verifyTextColorIsRed(registration_Page.getColorWrongNameErrorMessage(), "Not valid name-error message");
-        Verifications.verifyTextEquals(registration_Page.getTextWrongCellPhoneErrorMessage(), readFromThisFile("errorMessageWrongCellPhoneNumber"), "Not valid cellphone-error message");
-        Verifications.verifyTextColorIsRed(registration_Page.getColorWrongCellPhoneErrorMessage(), "Not valid cellphone-error message");
-        Verifications.verifyTextEquals(registration_Page.getTextiAgreeNotCheckedErrorMessage().replaceAll("\\s+", " ").trim(), readFromThisFile("errorMessageIagreeNotChecked").replaceAll("\\s+", " ").trim(), "I agree-not checked-error message");
-        Verifications.verifyTextColorIsRed(registration_Page.getColoriAgreeNotCheckedErrorMessage(), "I agree-not checked-error message");
+        Verifications.verifyTextEquals(registrationPage_form.getTextWrongNameErrorMessage(), readFromThisFile("errorMessageWrongName"), "Not valid name-error message");
+        Verifications.verifyTextColorIsRed(registrationPage_form.getColorWrongNameErrorMessage(), "Not valid name-error message");
+        Verifications.verifyTextEquals(registrationPage_form.getTextWrongCellPhoneErrorMessage(), readFromThisFile("errorMessageWrongCellPhoneNumber"), "Not valid cellphone-error message");
+        Verifications.verifyTextColorIsRed(registrationPage_form.getColorWrongCellPhoneErrorMessage(), "Not valid cellphone-error message");
+        Verifications.verifyTextEquals(registrationPage_form.getTextiAgreeNotCheckedErrorMessage().replaceAll("\\s+", " ").trim(), readFromThisFile("errorMessageIagreeNotChecked").replaceAll("\\s+", " ").trim(), "I agree-not checked-error message");
+        Verifications.verifyTextColorIsRed(registrationPage_form.getColoriAgreeNotCheckedErrorMessage(), "I agree-not checked-error message");
         Verifications.assertAll();
-
     }
 
     @Test
@@ -68,22 +67,22 @@ Tests01_Registration_And_Login extends BaseTest {
     @Description("Complete the registration process with valid inputs and verify that log in made with the new account, and check that the account details match the inputs that provided   ")
     public void test02_Registration() throws ParserConfigurationException, IOException, SAXException {
         homePage.navigateToRegistrationPage();
-        Assert.assertTrue(registration_Page.registrationPageIsDisplayed());
-        registration_Page.select_Register_By_Email();
+        Assert.assertTrue(registrationPage_Step1_InsertEmail.registrationPageIsDisplayed());
+        registrationPage_Step1_InsertEmail.select_Register_By_Email();
         String registrationTab1_InsertEmail = getCurrentTabHandle();
-        registration_Page.navigateToMailiNator();
+        registrationPage_Step1_InsertEmail.navigateToMailiNator();
         mailiNator_Page_NewTab.createDemoEmail(randomString);
         String mailinatorTab = getCurrentTabHandle();
         switchToTab(registrationTab1_InsertEmail);
-        registration_Page.enter_By_Email(randomString + readFromThisFile("mailiNator_Annotation"));
+        registrationPage_Step1_InsertEmail.enter_By_Email(randomString + readFromThisFile("mailiNator_Annotation"));
         String registrationTab2_InsertPassword = getCurrentTabHandle();
         switchToTab(mailinatorTab);
         mailiNator_Page_NewTab.getFirstRecievedEmail();
         String otpCode = mailiNator_Page_NewTab.getPasswordText();
         closeCurrentTabAndSwitchTo(registrationTab2_InsertPassword);
-        registration_Page.send_OtpCode(otpCode) //////Send Otp code ,enter and then fill the form and click on the register button
-                .clickEnter_AfterRegisterProcess()
-                .sendKeys_FullName(readFromThisFile("firstName"), readFromThisFile("lastName"))
+        registrationPage_step2_insertCode.send_OtpCode(otpCode) //////Send Otp code ,enter and then fill the form and click on the register button
+                .clickEnter_AfterRegisterProcess();
+        registrationPage_form.sendKeys_FullName(readFromThisFile("firstName"), readFromThisFile("lastName"))
                 .select_CountryCode(readFromThisFile("countryCode"))
                 .sendKeys_CellPhoneNumber(readFromThisFile("cellPhoneNumber"))
                 .click_IAgree_PrivacyPolicy()
@@ -101,13 +100,13 @@ Tests01_Registration_And_Login extends BaseTest {
     public void test03_ErrorMessage_Not_Valid_Email() throws ParserConfigurationException, IOException, SAXException {
         homePage.logOut()
                 .navigateToRegistrationPage();
-        Assert.assertTrue(registration_Page.registrationPageIsDisplayed());
-        registration_Page.select_Register_By_Email()
+        Assert.assertTrue(registrationPage_Step1_InsertEmail.registrationPageIsDisplayed());
+        registrationPage_Step1_InsertEmail.select_Register_By_Email()
                 .sendKeys_Email_Field(readFromThisFile("wrongEmail"));
-        Verifications.verifyTextEquals(registration_Page.getInputFieldValueEmail(), readFromThisFile("wrongEmail"), "Text appears on email field");
-        registration_Page.click_Enter_After_InsertEmail();
-        Verifications.verifyTextEquals(registration_Page.getTextInvalidEmailErrorMessage(), readFromThisFile("errorMessageWrongEmail"), "Error message-not valid email address");
-        Verifications.verifyTextColorIsRed(registration_Page.getColorInvalidErrorMessage(), "Error message-not valid email address");
+        Verifications.verifyTextEquals(registrationPage_Step1_InsertEmail.getInputFieldValueEmail(), readFromThisFile("wrongEmail"), "Text appears on email field");
+        registrationPage_Step1_InsertEmail.click_Enter_After_InsertEmail();
+        Verifications.verifyTextEquals(registrationPage_Step1_InsertEmail.getTextInvalidEmailErrorMessage(), readFromThisFile("errorMessageWrongEmail"), "Error message-not valid email address");
+        Verifications.verifyTextColorIsRed(registrationPage_Step1_InsertEmail.getColorInvalidEmailErrorMessage(), "Error message-not valid email address");
         Verifications.assertAll();
     }
 
@@ -118,17 +117,17 @@ Tests01_Registration_And_Login extends BaseTest {
     public void test04_Login_with_registered_email() throws ParserConfigurationException, IOException, SAXException {
         homePage.logOut()
                 .navigateToRegistrationPage();
-        Assert.assertTrue(registration_Page.registrationPageIsDisplayed());
-        registration_Page.select_Register_By_Email()
+        Assert.assertTrue(registrationPage_Step1_InsertEmail.registrationPageIsDisplayed());
+        registrationPage_Step1_InsertEmail.select_Register_By_Email()
                 .enter_By_Email(randomString + readFromThisFile("mailiNator_Annotation"));
         String registrationTab2_InsertPassword = getCurrentTabHandle();
-        registration_Page.navigateToMailiNator();
+        registrationPage_Step1_InsertEmail.navigateToMailiNator();
         mailiNator_Page_NewTab.sendKeysSearchEmail(randomString)
                 .clickMailiNatorPageSearchButton()
                 .getEmailContainCode();
         String otpCode = mailiNator_Page_NewTab.getPasswordText();
         closeCurrentTabAndSwitchTo(registrationTab2_InsertPassword);
-        registration_Page.send_OtpCode(otpCode)
+        registrationPage_step2_insertCode.send_OtpCode(otpCode)
                 .clickEnter_AfterLoginProcess()
                 .verify_SMS_OtpCode();
         Verifications.verifyTrue(homePage.homePageIsDisplayed(), "Is home page displayed");
@@ -138,6 +137,5 @@ Tests01_Registration_And_Login extends BaseTest {
         Verifications.verifyTextEquals(myAccountDetails_page.getCellPhoneInputValue(), readFromThisFile("cellPhoneNumber") + " " + readFromThisFile("countryCode") + "+", "Text on cellphone field");
         Verifications.assertAll();
     }
-
 }
 

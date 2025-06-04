@@ -30,12 +30,14 @@ import static utils.Utilities.readFromThisFile;
 public class BaseTest {
 
     // protected static WebDriver driver;
-    protected static ThreadLocal<WebDriver> driverThreadLocal = new ThreadLocal<>();
+    protected static ThreadLocal<WebDriver> driverThreadLocal = new ThreadLocal<>();// // Thread-safe WebDriver instance storage: each thread gets its own WebDriver object for running all test on same time (parallel runnimg)
     protected static Actions actions;
     protected static WebDriverWait wait;
     protected SoftAssert softAssert;
     protected HomePage homePage;
-    protected Registration_Page registration_Page;
+    protected RegistrationPage_Step1_InsertEmail registrationPage_Step1_InsertEmail;
+    protected RegistrationPage_Step2_InsertCode  registrationPage_step2_insertCode;
+    protected RegistrationPage_Form registrationPage_form;
     protected MailiNator_Page_NewTab mailiNator_Page_NewTab;
     protected MyAccountDetails_Page myAccountDetails_page;
     protected SearchResults_Page searchResults_page;
@@ -60,7 +62,9 @@ public class BaseTest {
     public void uploadSite() throws ParserConfigurationException, IOException, SAXException {
         softAssert = new SoftAssert(); ///Important Reinitialize SoftAssert in @BeforeMethod so that each test starts with clean softassertions data
         homePage = new HomePage(getDriver());
-        registration_Page=new Registration_Page(getDriver());
+        registrationPage_Step1_InsertEmail=new RegistrationPage_Step1_InsertEmail(getDriver());
+        registrationPage_step2_insertCode=new  RegistrationPage_Step2_InsertCode(getDriver());
+        registrationPage_form=new RegistrationPage_Form(getDriver());
         mailiNator_Page_NewTab=new MailiNator_Page_NewTab(getDriver());
         myAccountDetails_page=new MyAccountDetails_Page(getDriver());
         searchResults_page=new SearchResults_Page(getDriver());
@@ -70,7 +74,7 @@ public class BaseTest {
         purchaseGiftCard_Step2_Page=new Purchase_GiftCard_Step2_Page(getDriver());
         giftCard_balance_page=new GiftCard_Balance_Page(getDriver());
         giftsForEmployees_page=new GiftsForEmployees_Page(getDriver());
-        getDriver().get(readFromThisFile("url"));
+        getDriver().get(readFromThisFile("url")); ///Before start the test navigate to buy me home page
     }
 
     public static WebDriver getDriver() {  ///This method is good if I want to run the tests by parallel with more than one driver opens on the same time
@@ -130,7 +134,7 @@ public class BaseTest {
     public  void quit() {
         if (getDriver() != null) {
             getDriver().quit();
-            driverThreadLocal.remove();
+            driverThreadLocal.remove(); /// After all tests on class close the driver
         }
     }
 

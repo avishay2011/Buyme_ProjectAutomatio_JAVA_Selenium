@@ -13,7 +13,7 @@ import static utils.Utilities.takeScreenShot;
 
 public class BasePage {
     protected WebDriver driver;
-    protected WebDriverWait wait; //= new WebDriverWait(driver, Duration.ofSeconds(10));
+    protected WebDriverWait wait;
     protected Actions action;
 
 
