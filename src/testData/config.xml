@@ -39,7 +39,7 @@
     <giftRecieverName>avishay</giftRecieverName>
     <blessing>מזל טוב ועד 120</blessing>
     ///Wrong Coupon Code
-    <couponCode>1234123412341234</couponCode>
+    <wrongcouponCode>1234123412341234</wrongcouponCode>
     <expirationDay>25</expirationDay>
     <expirationMonth>אוגוסט</expirationMonth>
     <expirationYear>2027</expirationYear>

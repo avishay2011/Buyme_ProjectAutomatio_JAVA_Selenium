@@ -22,23 +22,14 @@ public class Tests04_Check_Gift_Card_Balance extends BaseTest {
     public void checkPageReadyAndPreConditions() throws ParserConfigurationException, IOException, SAXException {
         Assert.assertTrue(homePage.pageLoadedWithNoErrors());
         Assert.assertTrue(homePage.homePageIsDisplayed());
-        homePage.clickcheckGiftCardBalanceButton();
-        Assert.assertTrue(giftCard_balance_page.isGiftBalanceScreenOpen());
-        Verifications.verifyTextEquals(giftCard_balance_page.getText_WhatIsYourCodeMessageText(), readFromThisFile("whatisCode_Text"), "Text for code field");
-        Verifications.verifyTextEquals(giftCard_balance_page.getText_WhatIsExpirationDate_MessageText(), readFromThisFile("whatisExpiration_Text"), "Text for expiration field");
+        checkGiftCardBalanceFlow.verifyGiftCardBalanceScreenFlow();
     }
 
     @Test
     @Severity(SeverityLevel.NORMAL)
     @Description("Check not exists gift card Code and verify that the correct error message appears")
     public void test01_ErrorShown_ForNonExistentGiftCardCode() throws ParserConfigurationException, IOException, SAXException, InterruptedException {
-        giftCard_balance_page.sendKeys_CouponField(readFromThisFile("couponCode"))
-                .click_DatePicker_Button()
-                .select_Date_Picker(readFromThisFile("expirationDay"), readFromThisFile("expirationMonth"), readFromThisFile("expirationYear"))
-                .click_CheckBalance_Button();
-        Verifications.verifyTextEquals(giftCard_balance_page.getText_WrongGiftCardCode_ErrorMessage(), readFromThisFile("wrongGiftCardCode_ErrorMessage"), "Error message -Wrong gift card code");
-        Verifications.verifyTextColorIsRed(giftCard_balance_page.getColor_WrongGiftCardCode_ErrorMessage(), "Error message -Wrong gift card code");
-        Verifications.assertAll();
+        checkGiftCardBalanceFlow.fillGiftCardDetails_WrongGiftCardCode();
     }
 
     @Test
@@ -46,23 +37,13 @@ public class Tests04_Check_Gift_Card_Balance extends BaseTest {
     @Description("Check exists gift card Code that allready used and verify that the correct message appears")
     /////Was supposed to check an existing expired voucher, but since I didn’t have one – I checked a voucher that was already fully used instead
     public void test02_ErrorShown_ForExistentGiftCardCode_ThatAllreadyUsed() throws ParserConfigurationException, IOException, SAXException, InterruptedException {
-        giftCard_balance_page.sendKeys_CouponField(readFromThisFile("existsUsedCouponCode"))
-                .click_DatePicker_Button()
-                .select_Date_Picker(readFromThisFile("existsUsedCouponExpiration_day"), readFromThisFile("existsUsedCouponExpiration_month"), readFromThisFile("existsUsedCouponExpiration_year"))
-                .click_CheckBalance_Button();
-        Verifications.verifyTextEquals(giftCard_balance_page.getText_UsedGiftCard_BalanceMessage(), readFromThisFile("giftCardAllreadyUsed_BalanceMessage"), "Gift card balance message");
-        Verifications.assertAll();
+        checkGiftCardBalanceFlow.fillGiftCardDetails_UsedGiftCardCode();
     }
 
     @Test
     @Severity(SeverityLevel.CRITICAL)
     @Description("Check valid gift card code and verify that the right message appears with the current balanced")
     public void test03_ValidGiftCard() throws ParserConfigurationException, IOException, SAXException, InterruptedException {
-        giftCard_balance_page.sendKeys_CouponField(readFromThisFile("validCouponCode"))
-                .click_DatePicker_Button()
-                .select_Date_Picker(readFromThisFile("validCouponExpiration_day"), readFromThisFile("validCouponExpiration_month"), readFromThisFile("validCouponExpiration_year"))
-                .click_CheckBalance_Button();
-        Verifications.verifyTrue(giftCard_balance_page.getText_Valid_GiftCardBalance_Message().contains(readFromThisFile("giftCard_Valid_Balance")), "Verify Text contains expected balance");
-        Verifications.assertAll();
+       checkGiftCardBalanceFlow.fillGiftCardDetails_ValidGiftCardCode();
     }
 }

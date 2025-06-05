@@ -1,6 +1,7 @@
 package test;
 
 
+import flows.CheckGiftCardBalanceFlow;
 import flows.FilterAndSearchGiftsFlow;
 import flows.GiftsForEmployeesFlow;
 import flows.RegistrationAndLoginFlow;
@@ -53,6 +54,7 @@ public class BaseTest {
     protected RegistrationAndLoginFlow registrationAndLogin_Flow;
     protected FilterAndSearchGiftsFlow filterAndSearchGifts_Flow;
     protected GiftsForEmployeesFlow giftsForEmployeesFlow;
+    protected CheckGiftCardBalanceFlow checkGiftCardBalanceFlow;
 
 
     @BeforeClass
@@ -83,6 +85,8 @@ public class BaseTest {
         registrationAndLogin_Flow=new RegistrationAndLoginFlow();
         filterAndSearchGifts_Flow=new FilterAndSearchGiftsFlow();
         giftsForEmployeesFlow=new GiftsForEmployeesFlow();
+        checkGiftCardBalanceFlow=new CheckGiftCardBalanceFlow();
+
         getDriver().get(readFromThisFile("url")); ///Before start the test navigate to buy me home page
     }
 

@@ -7,11 +7,9 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-import org.xml.sax.SAXException;
-import verifications.Verifications;
+import org.xml.sax.SAXException;;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
-import static utils.Utilities.readFromThisFile;
 
 @Listeners(utils.Listeners.class)
 public class Tests05_GiftsForEmployees extends BaseTest{
