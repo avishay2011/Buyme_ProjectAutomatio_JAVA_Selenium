@@ -1,6 +1,9 @@
 package test;
 
 
+import flows.FilterAndSearchGiftsFlow;
+import flows.GiftsForEmployeesFlow;
+import flows.RegistrationAndLoginFlow;
 import io.qameta.allure.testng.AllureTestNg;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -47,6 +50,9 @@ public class BaseTest {
     protected Purchase_GiftCard_Step2_Page purchaseGiftCard_Step2_Page;
     protected GiftCard_Balance_Page giftCard_balance_page;
     protected GiftsForEmployees_Page giftsForEmployees_page;
+    protected RegistrationAndLoginFlow registrationAndLogin_Flow;
+    protected FilterAndSearchGiftsFlow filterAndSearchGifts_Flow;
+    protected GiftsForEmployeesFlow giftsForEmployeesFlow;
 
 
     @BeforeClass
@@ -74,6 +80,9 @@ public class BaseTest {
         purchaseGiftCard_Step2_Page=new Purchase_GiftCard_Step2_Page(getDriver());
         giftCard_balance_page=new GiftCard_Balance_Page(getDriver());
         giftsForEmployees_page=new GiftsForEmployees_Page(getDriver());
+        registrationAndLogin_Flow=new RegistrationAndLoginFlow();
+        filterAndSearchGifts_Flow=new FilterAndSearchGiftsFlow();
+        giftsForEmployeesFlow=new GiftsForEmployeesFlow();
         getDriver().get(readFromThisFile("url")); ///Before start the test navigate to buy me home page
     }
 

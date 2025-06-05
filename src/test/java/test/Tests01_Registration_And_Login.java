@@ -1,5 +1,6 @@
 package test;
 
+import flows.RegistrationAndLoginFlow;
 import io.qameta.allure.Description;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
@@ -22,6 +23,7 @@ Tests01_Registration_And_Login extends BaseTest {
     private String randomString = generateRandomString(); //Generate random string that used me for registration and also for the login  test
     private String randomString2 = generateRandomString();//Generate random string that used me for registration with wrong details (test04)
 
+
     @BeforeMethod
     @Severity(SeverityLevel.BLOCKER)
     public void checkPageReady() throws ParserConfigurationException, IOException, SAXException {
@@ -31,28 +33,12 @@ Tests01_Registration_And_Login extends BaseTest {
 
     @Test
     @Severity(SeverityLevel.CRITICAL)
-    @Description("Start the registration process .get to the registration form and verify that the correct error messages appears after insert wrong values")
+    @Description("Fill registration form with invalid values and verify  the expected error messages appears ")
     public void test01_NotValidRegistration() throws ParserConfigurationException, IOException, SAXException {
         homePage.navigateToRegistrationPage();
         Assert.assertTrue(registrationPage_Step1_InsertEmail.registrationPageIsDisplayed());
-        registrationPage_Step1_InsertEmail.select_Register_By_Email();
-        String registrationTab1_InsertEmail = getCurrentTabHandle();
-        registrationPage_Step1_InsertEmail.navigateToMailiNator();
-        mailiNator_Page_NewTab.createDemoEmail(randomString2);
-        String mailinatorTab = getCurrentTabHandle();
-        switchToTab(registrationTab1_InsertEmail);
-        registrationPage_Step1_InsertEmail.enter_By_Email(randomString2 + readFromThisFile("mailiNator_Annotation"));
-        String registrationTab2_InsertPassword = getCurrentTabHandle();
-        switchToTab(mailinatorTab);
-        mailiNator_Page_NewTab.getFirstRecievedEmail();
-        String otpCode = mailiNator_Page_NewTab.getPasswordText();
-        closeCurrentTabAndSwitchTo(registrationTab2_InsertPassword);
-        registrationPage_step2_insertCode.send_OtpCode(otpCode) ///Send Otp code ,enter and then fill the form and click on the register button
-                .clickEnter_AfterRegisterProcess();
-        registrationPage_form.sendKeys_FullName(readFromThisFile("wrongInputFirstName"), readFromThisFile("wrongInputLastName"))
-                .select_CountryCode(readFromThisFile("countryCode"))
-                .sendKeys_CellPhoneNumber(readFromThisFile("wrongInputCellPhoneNumber"))
-                .click_Register_Button();
+        registrationAndLogin_Flow.submitEmailAndSendOtp(randomString2);
+        registrationAndLogin_Flow.fillRegistrationFormWithInvalidData();
         Verifications.verifyTextEquals(registrationPage_form.getTextWrongNameErrorMessage(), readFromThisFile("errorMessageWrongName"), "Not valid name-error message");
         Verifications.verifyTextColorIsRed(registrationPage_form.getColorWrongNameErrorMessage(), "Not valid name-error message");
         Verifications.verifyTextEquals(registrationPage_form.getTextWrongCellPhoneErrorMessage(), readFromThisFile("errorMessageWrongCellPhoneNumber"), "Not valid cellphone-error message");
@@ -65,28 +51,11 @@ Tests01_Registration_And_Login extends BaseTest {
     @Test
     @Severity(SeverityLevel.CRITICAL)
     @Description("Complete the registration process with valid inputs and verify that log in made with the new account, and check that the account details match the inputs that provided   ")
-    public void test02_Registration() throws ParserConfigurationException, IOException, SAXException {
+    public void test02_ValidRegistration() throws ParserConfigurationException, IOException, SAXException {
         homePage.navigateToRegistrationPage();
         Assert.assertTrue(registrationPage_Step1_InsertEmail.registrationPageIsDisplayed());
-        registrationPage_Step1_InsertEmail.select_Register_By_Email();
-        String registrationTab1_InsertEmail = getCurrentTabHandle();
-        registrationPage_Step1_InsertEmail.navigateToMailiNator();
-        mailiNator_Page_NewTab.createDemoEmail(randomString);
-        String mailinatorTab = getCurrentTabHandle();
-        switchToTab(registrationTab1_InsertEmail);
-        registrationPage_Step1_InsertEmail.enter_By_Email(randomString + readFromThisFile("mailiNator_Annotation"));
-        String registrationTab2_InsertPassword = getCurrentTabHandle();
-        switchToTab(mailinatorTab);
-        mailiNator_Page_NewTab.getFirstRecievedEmail();
-        String otpCode = mailiNator_Page_NewTab.getPasswordText();
-        closeCurrentTabAndSwitchTo(registrationTab2_InsertPassword);
-        registrationPage_step2_insertCode.send_OtpCode(otpCode) //////Send Otp code ,enter and then fill the form and click on the register button
-                .clickEnter_AfterRegisterProcess();
-        registrationPage_form.sendKeys_FullName(readFromThisFile("firstName"), readFromThisFile("lastName"))
-                .select_CountryCode(readFromThisFile("countryCode"))
-                .sendKeys_CellPhoneNumber(readFromThisFile("cellPhoneNumber"))
-                .click_IAgree_PrivacyPolicy()
-                .click_Register_Button();
+        registrationAndLogin_Flow.submitEmailAndSendOtp(randomString);
+        registrationAndLogin_Flow.fillRegistrationFormWithValidData();
         homePage.navigateToMyAccountDetailsPage();
         Verifications.verifyTextEquals(myAccountDetails_page.getFirstNameInputValue(), readFromThisFile("firstName"), "FirstName input  field text");
         Verifications.verifyTextEquals(myAccountDetails_page.getLastNameInputValue(), readFromThisFile("lastName"), "Last name input field text");
@@ -118,18 +87,7 @@ Tests01_Registration_And_Login extends BaseTest {
         homePage.logOut()
                 .navigateToRegistrationPage();
         Assert.assertTrue(registrationPage_Step1_InsertEmail.registrationPageIsDisplayed());
-        registrationPage_Step1_InsertEmail.select_Register_By_Email()
-                .enter_By_Email(randomString + readFromThisFile("mailiNator_Annotation"));
-        String registrationTab2_InsertPassword = getCurrentTabHandle();
-        registrationPage_Step1_InsertEmail.navigateToMailiNator();
-        mailiNator_Page_NewTab.sendKeysSearchEmail(randomString)
-                .clickMailiNatorPageSearchButton()
-                .getEmailContainCode();
-        String otpCode = mailiNator_Page_NewTab.getPasswordText();
-        closeCurrentTabAndSwitchTo(registrationTab2_InsertPassword);
-        registrationPage_step2_insertCode.send_OtpCode(otpCode)
-                .clickEnter_AfterLoginProcess()
-                .verify_SMS_OtpCode();
+        registrationAndLogin_Flow.loginWitRegisteredEmail(randomString);
         Verifications.verifyTrue(homePage.homePageIsDisplayed(), "Is home page displayed");
         homePage.navigateToMyAccountDetailsPage();
         Verifications.verifyTextEquals(myAccountDetails_page.getFirstNameInputValue(), readFromThisFile("firstName"), "Text on first name field");
