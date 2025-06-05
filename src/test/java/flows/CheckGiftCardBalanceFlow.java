@@ -14,8 +14,8 @@ import java.util.HashMap;
 import static utils.Utilities.readFromThisFile;
 
 public class CheckGiftCardBalanceFlow extends BaseTest {
-    HomePage homePage=new HomePage(getDriver());
-    GiftCard_Balance_Page giftCard_balance_page=new GiftCard_Balance_Page(getDriver());
+    private HomePage homePage=new HomePage(getDriver());
+    private GiftCard_Balance_Page giftCard_balance_page=new GiftCard_Balance_Page(getDriver());
 
     public CheckGiftCardBalanceFlow verifyGiftCardBalanceScreenFlow() throws ParserConfigurationException, IOException, SAXException {
         homePage.clickcheckGiftCardBalanceButton();

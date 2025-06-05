@@ -35,6 +35,16 @@ public class FilterAndSearchGiftsFlow extends BaseTest {
         return this;
     }
 
+    public FilterAndSearchGiftsFlow clearFilterFieldsFlow(){
+        getDriver().navigate().back();
+        homePage.clearSearch();
+        Verifications.verifyTrue(homePage.isAmountFieldIsClear(), "Amounts dropdown field  has clear");
+        Verifications.verifyTrue(homePage.isRegionFieldIsClear(), "Regions dropdown field  has clear");
+        Verifications.verifyTrue(homePage.isCategoryFieldIsClear(), "Categories dropdown field has clear");
+        Verifications.assertAll();
+        return this;
+    }
+
 
 
 }

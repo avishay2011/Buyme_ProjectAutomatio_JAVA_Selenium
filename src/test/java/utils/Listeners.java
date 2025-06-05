@@ -18,7 +18,6 @@ public class Listeners extends BaseTest implements ITestListener  {
 		System.out.println("----------EndingExecution-------------");
 	}
 	public void onTestFailedButWithSuccessPercentage (ITestResult test){
-		///To Do implement this method
 	}
 	public void onTestSkipped (ITestResult test){
 		System.out.println("----------Skipping Test: " + test.getName() + "---------------") ;
@@ -28,11 +27,11 @@ public class Listeners extends BaseTest implements ITestListener  {
 	}
 
 	public void onTestSuccess (ITestResult test) {
-		System.out.println("----------Test: " + test.getName() + " passed:-----------------");
+		System.out.println("✅ TEST PASSED SUCCESSFULLY! ✅");
 		takeScreenShot(getDriver());
 	}
 	public void onTestFailure (ITestResult test){
-		System.out.println("----------Test: " + test.getName() + " failed:-----------------");
+		System.out.println("❌❌❌ TEST FAILED ❌❌❌-");
 		takeScreenShot(getDriver());
 	}
 

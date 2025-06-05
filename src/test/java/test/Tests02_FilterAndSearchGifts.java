@@ -8,12 +8,10 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import org.xml.sax.SAXException;
-import verifications.Verifications;
-
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 
-import static utils.Utilities.readFromThisFile;
+
 
 @Listeners(utils.Listeners.class)
 public class Tests02_FilterAndSearchGifts extends BaseTest {
@@ -38,11 +36,6 @@ public class Tests02_FilterAndSearchGifts extends BaseTest {
     @Description("Clear filter fields and verify that all the filter selections have made resets to default")
     public void test02_Filter_And_Clear_Filter_Fields() throws ParserConfigurationException, IOException, SAXException {
         filterAndSearchGifts_Flow.dropdownSelectionFlow();
-        getDriver().navigate().back();
-        homePage.clearSearch();
-        Verifications.verifyTrue(homePage.isAmountFieldIsClear(), "Amounts dropdown field  has clear");
-        Verifications.verifyTrue(homePage.isRegionFieldIsClear(), "Regions dropdown field  has clear");
-        Verifications.verifyTrue(homePage.isCategoryFieldIsClear(), "Categories dropdown field has clear");
-        Verifications.assertAll();
+        filterAndSearchGifts_Flow.clearFilterFieldsFlow();
     }
 }
